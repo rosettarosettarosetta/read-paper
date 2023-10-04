@@ -17,6 +17,6 @@ the network first encodes a 14 sentence-length sequence of neural activity into 
 
 实验：训练数据包括一组约30-50个句子的多次口头重复，以及分布在周围沟语言皮层上的大约250个电极处的相应神经信号。
 
-
+多模态
 
 {% embed url="https://www.biorxiv.org/content/10.1101/708206v1.full.pdf" %}

@@ -8,6 +8,24 @@ description: CNN+医学图像分割的SAM
 
 ## Segment Anything Model (SAM)（图像分割）医学图像与CNN结合
 
+## 运用的模型：
+
+**全卷积网络（FCN）：**这种方法能够处理任意大小的输入图像，并通过用卷积层替换全连接层来生成分割结果。（对标于CNN）
+
+
+
+**U-Net：**是最常用的医学图像分割架构。它包括一个编码器和一个解码器，它们之间有跳跃连接以保留重要的特征。
+
+**Transformer**：在计算机视觉领域引入了（与传统的CNN架构相比，Transformer可以捕捉更长范围的依赖关系。）
+
+**ViT：**图像分类，采用了自注意机制 。。。。。等等
+
+Deeplab 、
+
+
+
+
+
 难点：lack of training samples due to privacy concerns
 
 sloution： ensure their optimal utilization(~~这也叫答案？~~)

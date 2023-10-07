@@ -1,4 +1,3 @@
-# read-paper
 # Table of contents
 
 * [Table of contents](README.md)
@@ -10,3 +9,8 @@
   * [1.Person Search with Natural Language Description](cross-modal/1.person-search-with-natural-language-description.md)
   * [2.Improving Description-based Person Re-identification by Multi-granularity Image-text Align](cross-modal/2.improving-description-based-person-re-identification-by-multi-granularity-image-text-alignments.md)
   * [3.Effective conditioned and composed image retrieval combining CLIP-based features](cross-modal/3.effective-conditioned-and-composed-image-retrieval-combining-clip-based-features.md)
+  * [特定特征改变生成图片模型调查](cross-modal/te-ding-te-zheng-gai-bian-sheng-cheng-tu-pian-mo-xing-tiao-cha.md)
+* [cortical activity decode](cortical-activity-decode/README.md)
+  * [Machine translation of cortical activity to text with an encoder-decoder framework](cortical-activity-decode/machine-translation-of-cortical-activity-to-text-with-an-encoder-decoder-framework.md)
+* [multimodal](multimodal/README.md)
+  * [Ladder Fine-tuning approach for SAM integrating complementary network](multimodal/ladder-fine-tuning-approach-for-sam-integrating-complementary-network.md)

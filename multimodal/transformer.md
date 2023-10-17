@@ -1,32 +1,84 @@
 ---
-description: https://www.zhihu.com/search?type=content&q=tarnsformer
+description: A-T-T-E-N-T-I-O-N~         Attention is What I Want!
 ---
 
 # ✍ Transformer
 
-## 1.整体结构
-
-### 1.1Encoder  Decoder :
-
-<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption><p>都包含 6 个 block</p></figcaption></figure>
+## 1.overview
 
 
 
-#### 1.1.1 输入和处理
+## 2.整体结构
+
+### 2.1Encoder  Decoder :
+
+<figure><img src="../.gitbook/assets/image (9) (1).png" alt=""><figcaption><p>都包含 6 个 block</p></figcaption></figure>
+
+
+
+
+
+#### 2.1.1 输入和处理
 
 输入句子的 每一个单词的表示向量 X
 
-x由**单词 Embedding** 和**位置 Embedding** （Positional Encoding）相加得到。
+x由**词 Embedding** 和**位置 Embedding** （Positional Encoding）相加得到。
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+
+**词 Embedding:**d 表示 PE的维度&#x20;
+
+
 
 **位置 Embedding** ：保存单词在序列中的相对或绝对位置。（训练/公式计算得到）
 
 因为 Transformer 不采用 RNN 的结构，而是使用全局信息，不能利用单词的顺序信息，而这部分信息对于 NLP 来说非常重要。
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption><p>位置编码交织了一条正弦曲线和一条余弦曲线，所有偶数索引都有正弦值，所有奇数索引都有余弦值。</p></figcaption></figure>
 
-#### 1.1.2&#x20;
+pos 表示单词在句子中的位置，d 表示 PE的维度 （编码向量的长度（与嵌入向量相同）和 i 是这个向量的索引值）
+
+位置编码交织了一条正弦曲线和一条余弦曲线，所有偶数索引都有正弦值，所有奇数索引都有余弦值。
+
+**ex:**
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>40个单词的序列的编码值</p></figcaption></figure>
+
+### 2.2Self-Attention（自注意力机制）
+
+&#x20; Multi-Head Attention，是由多个 Self-Attention组成的
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>location</p></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+Q(查询),K(键值),V(值)   矩阵&#x20;
+
+#### &#x20;Q, K, V 的计算：
+
+X, Q, K, V 的每一行都表示一个单词
+
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+
+Self-Attention 的输出：
+
+公式中计算矩阵Q和K每一行向量的内积，为了防止内积过大，因此除以 dk的平方根。Q乘以K的转置后，得到的矩阵行列数都为 n，n 为句子单词数，这个矩阵可以表示单词之间的 attention 强度。
+
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+
+####
+
+#### 2.2.2Add & Norm
+
+
+
+Add 表示残差连接 (Residual Connection) 用于防止网络退化
+
+Norm 表示 Layer Normalization，用于对每一层的激活值进行归一化
+
+#### 2.1.2&#x20;
 
 将得到的单词表示向量矩阵 (如上图所示，每一行是一个单词的表示 x) 传入 Encoder 中，经过 6 个 Encoder block 后可以得到句子所有单词的编码信息矩阵 C，如下图。单词向量矩阵用 Xn.d 表示， n 是句子中单词个数，d 是表示向量的维度 (论文中 d=512)。
 
@@ -34,7 +86,7 @@ x由**单词 Embedding** 和**位置 Embedding** （Positional Encoding）相加
 
 每一个 Encoder block 输出的矩阵维度与输入完全一致。
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
 #### 1.1.3 decoder 预测部分
 
@@ -44,7 +96,7 @@ x由**单词 Embedding** 和**位置 Embedding** （Positional Encoding）相加
 
 
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -103,10 +155,26 @@ transofrmer类似于多头的注意力，约等于多输出通道
 
 
 
+## Extended explanation：
 
+### [1.PE](transformer.md#1.1.1-shu-ru-he-chu-li)
+
+2i 表示偶数的维度，2i+1 表示奇数维度 (即 2i≤d, 2i+1≤d)。使用这种公式计算 PE 有以下的好处。
+
+* 使 PE 能够适应比训练集里面所有句子更长的句子，假设训练集里面最长的句子是有 20 个单词，突然来了一个长度为 21 的句子，则使用公式计算的方法可以计算出第 21 位的 Embedding。
+* 可以让模型容易地计算出相对位置，对于固定长度的间距 k，PE(pos+k) 可以用 PE(pos) 计算得到。因为 Sin(A+B) = Sin(A)Cos(B) + Cos(A)Sin(B), Cos(A+B) = Cos(A)Cos(B) - Sin(A)Sin(B)。
+
+\
+
+
+
+
+## Reference:
+
+[https://www.zhihu.com/search?type=content\&q=tarnsformer](https://www.zhihu.com/search?type=content\&q=tarnsformer)
 
 {% file src="../.gitbook/assets/image (3) (1).png" %}
 
-{% file src="../.gitbook/assets/image (9).png" %}
+{% file src="../.gitbook/assets/image (9) (1).png" %}
 
 {% embed url="https://arxiv.org/pdf/1706.03762.pdf" %}

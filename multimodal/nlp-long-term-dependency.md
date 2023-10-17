@@ -20,9 +20,9 @@ description: cnn,rnn,transformer
 
 #### shorts:过程太间接了，因为信息在网络中实际传播了太多层。究竟哪些信息被保留，哪些被丢弃了，弄不清楚。
 
-{% file src="../.gitbook/assets/image (5).png" %}
+{% file src="../.gitbook/assets/image (5) (1).png" %}
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## RNN
 
@@ -35,11 +35,11 @@ description: cnn,rnn,transformer
 
 
 \
-
+RNN 在循环过程中，每个词按顺序输入，因此隐含地知道每个词的位置。
 
 因为后一个词的计算需要用到前一个词的输出结果，所以理论上任何两个词的[依赖RNN](https://www.zhihu.com/search?q=%E4%BE%9D%E8%B5%96RNN\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A2979260071%7D)都能捕捉到。
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### advantage：同时可以对前后词之间依赖建模（=CNN+pool）
 
@@ -51,7 +51,7 @@ description: cnn,rnn,transformer
 
 ##
 
-{% file src="../.gitbook/assets/image (6).png" %}
+{% file src="../.gitbook/assets/image (6) (1).png" %}
 
 ##
 
@@ -63,13 +63,13 @@ gpt
 
 自注意力层（经过编码器或解码器）和前馈[全连接层](https://www.zhihu.com/search?q=%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22answer%22%2C%22sourceId%22%3A%222839550750%22%7D)组成
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
 
 
-{% file src="../.gitbook/assets/image (7).png" %}
+{% file src="../.gitbook/assets/image (7) (1).png" %}
 
 ## References：
 

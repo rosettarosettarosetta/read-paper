@@ -13,4 +13,7 @@
 * [cortical activity decode](cortical-activity-decode/README.md)
   * [Machine translation of cortical activity to text with an encoder-decoder framework](cortical-activity-decode/machine-translation-of-cortical-activity-to-text-with-an-encoder-decoder-framework.md)
 * [multimodal](multimodal/README.md)
+  * [Segment Anything](multimodal/segment-anything.md)
   * [Ladder Fine-tuning approach for SAM integrating complementary network](multimodal/ladder-fine-tuning-approach-for-sam-integrating-complementary-network.md)
+  * [attention is all you need(transformer)](multimodal/attention-is-all-you-need-transformer.md)
+  * [NLP:long-term dependency](multimodal/nlp-long-term-dependency.md)

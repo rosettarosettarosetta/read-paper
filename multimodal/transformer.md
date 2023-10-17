@@ -2,7 +2,29 @@
 description: https://www.zhihu.com/search?type=content&q=tarnsformer
 ---
 
-# attention is all you need(transformer)
+# ✍ Transformer
+
+### Encoder  Decoder :
+
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption><p>都包含 6 个 block</p></figcaption></figure>
+
+
+
+#### 1.
+
+获取输入句子的每一个单词的表示向量 X，X由单词的 Embedding（Embedding就是从原始数据提取出来的Feature） 和单词位置的 Embedding 相加得到。
+
+<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+
+
+
+
+
+
+
+
+
+
 
 仅仅用了注意力机制而不是循环或者卷积
 
@@ -26,8 +48,6 @@ transofrmer类似于多头的注意力，约等于多输出通道
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
-{% file src="../.gitbook/assets/image (3).png" %}
-
 #### 1.inputs
 
 #### 2.tokenization
@@ -44,5 +64,11 @@ transofrmer类似于多头的注意力，约等于多输出通道
 输入序列中的每个token转换为其对应的向量表示的过程
 
 
+
+
+
+{% file src="../.gitbook/assets/image (3).png" %}
+
+{% file src="../.gitbook/assets/image (9).png" %}
 
 {% embed url="https://arxiv.org/pdf/1706.03762.pdf" %}

@@ -16,4 +16,4 @@
   * [Segment Anything](multimodal/segment-anything.md)
   * [Ladder Fine-tuning approach for SAM integrating complementary network](multimodal/ladder-fine-tuning-approach-for-sam-integrating-complementary-network.md)
   * [attention is all you need(transformer)](multimodal/attention-is-all-you-need-transformer.md)
-  * [long-term dependency problem](multimodal/long-term-dependency-problem.md)
+  * [NLP:long-term dependency](multimodal/nlp-long-term-dependency.md)

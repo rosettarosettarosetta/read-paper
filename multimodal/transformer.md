@@ -171,6 +171,12 @@ _（没错～MultiHeadAttention 和 FeedForward的输出输入维度是一样的
 
 输出结构：
 
+第一行只包含0的信息
+
+第四行有0,1,2,3&#x20;
+
+因为marsks
+
 <figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 #### 1.1.3 decoder 预测部分

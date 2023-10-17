@@ -4,23 +4,61 @@ description: https://www.zhihu.com/search?type=content&q=tarnsformer
 
 # ✍ Transformer
 
-### Encoder  Decoder :
+## 1.整体结构
+
+### 1.1Encoder  Decoder :
 
 <figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption><p>都包含 6 个 block</p></figcaption></figure>
 
 
 
-#### 1.
+#### 1.1.1 输入和处理
 
-获取输入句子的每一个单词的表示向量 X，X由单词的 Embedding（Embedding就是从原始数据提取出来的Feature） 和单词位置的 Embedding 相加得到。
+输入句子的 每一个单词的表示向量 X
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+x由**单词 Embedding** 和**位置 Embedding** （Positional Encoding）相加得到。
+
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+**位置 Embedding** ：保存单词在序列中的相对或绝对位置。（训练/公式计算得到）
+
+因为 Transformer 不采用 RNN 的结构，而是使用全局信息，不能利用单词的顺序信息，而这部分信息对于 NLP 来说非常重要。
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+#### 1.1.2&#x20;
+
+将得到的单词表示向量矩阵 (如上图所示，每一行是一个单词的表示 x) 传入 Encoder 中，经过 6 个 Encoder block 后可以得到句子所有单词的编码信息矩阵 C，如下图。单词向量矩阵用 Xn.d 表示， n 是句子中单词个数，d 是表示向量的维度 (论文中 d=512)。
 
 
 
+每一个 Encoder block 输出的矩阵维度与输入完全一致。
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+#### 1.1.3 decoder 预测部分
+
+将 Encoder 输出的编码信息矩阵 C传递到 Decoder 中，Decoder 依次会根据当前翻译过的单词 1\~ i 翻译下一个单词 i+1。
+
+翻译到单词 i+1 的时候需要通过 **Mask** (掩盖) 操作遮盖住 i+1 之后的单词。
 
 
 
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+
+
+### 1.2Transformer 的输入
+
+
+
+#### 1.2.1 单词 Embedding
+
+单词的 Embedding 有很多种方式可以获取，例如可以采用 Word2Vec、Glove 等算法预训练得到，也可以在 Transformer 中训练得到。
+
+
+
+#### 1.2.2 位置 Embedding
 
 
 
@@ -46,7 +84,7 @@ transofrmer类似于多头的注意力，约等于多输出通道
 
 使用编码器解码器架构
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### 1.inputs
 
@@ -67,7 +105,7 @@ transofrmer类似于多头的注意力，约等于多输出通道
 
 
 
-{% file src="../.gitbook/assets/image (3).png" %}
+{% file src="../.gitbook/assets/image (3) (1).png" %}
 
 {% file src="../.gitbook/assets/image (9).png" %}
 

@@ -2,7 +2,7 @@
 description: cnn,rnn,transformer
 ---
 
-# NLP:long-term dependency
+# ✍ long-term dependency
 
 ### 长依赖问题
 

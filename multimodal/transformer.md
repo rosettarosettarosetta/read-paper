@@ -12,7 +12,7 @@ description: A-T-T-E-N-T-I-O-N~         Attention is What I Want!
 
 ### 2.1Encoder  Decoder :
 
-<figure><img src="../.gitbook/assets/image (9) (1).png" alt=""><figcaption><p>都包含 6 个 block</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9) (1) (1).png" alt=""><figcaption><p>都包含 6 个 block</p></figcaption></figure>
 
 
 
@@ -42,17 +42,17 @@ pos 表示单词在句子中的位置，d 表示 PE的维度 （编码向量的�
 
 **ex:**
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>40个单词的序列的编码值</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption><p>40个单词的序列的编码值</p></figcaption></figure>
 
 ### 2.2Self-Attention（自注意力机制）
 
 &#x20; Multi-Head Attention，是由多个 Self-Attention组成的
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>location</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption><p>location</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 Q(查询),K(键值),V(值)   矩阵&#x20;
 
@@ -60,33 +60,118 @@ Q(查询),K(键值),V(值)   矩阵&#x20;
 
 X, Q, K, V 的每一行都表示一个单词
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 Self-Attention 的输出：
 
 公式中计算矩阵Q和K每一行向量的内积，为了防止内积过大，因此除以 dk的平方根。Q乘以K的转置后，得到的矩阵行列数都为 n，n 为句子单词数，这个矩阵可以表示单词之间的 attention 强度。
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 
-####
+#### 这一块儿先弃个坑，还没搞懂：
 
-#### 2.2.2Add & Norm
+Transformer模型详解（图解最完整版） - 初识CV的文章 - 知乎 https://zhuanlan.zhihu.com/p/338817680
+
+Transformer 之逐层介绍 - 鱼先生的文章 - 知乎 https://zhuanlan.zhihu.com/p/604450283
 
 
 
-Add 表示残差连接 (Residual Connection) 用于防止网络退化
+### 2.3Add & Norm     Feed Forward
 
-Norm 表示 Layer Normalization，用于对每一层的激活值进行归一化
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>结合A&#x26;M的位置看</p></figcaption></figure>
 
-#### 2.1.2&#x20;
+X表示 Multi-Head Attention 或者 Feed Forward 的输入
+
+MultiHeadAttention(X) 和 FeedForward(X) 表示输出&#x20;
+
+
+
+**Add**指 X+MultiHeadAttention(X)，是一种**残差网络**，通常用于解决多层网络训练的问题，可以让网络只关注当前差异的部分，用于_`防止网络退化`（在 ResNet 中经常用到）_
+
+
+
+**Norm**指 Layer Normalization，Layer Normalization 会将每一层神经元的输入都转成均值方差都一样的，这样可以_`加快收敛`_。_（通常用于 RNN 结构）_
+
+
+
+
+
+**Feed Forward** 是一个两层的全连接层，第一层的激活函数为 Relu，第二层不使用激活函数，![](<../.gitbook/assets/image (1).png>)
+
+
+
+_（没错～MultiHeadAttention 和 FeedForward的输出输入维度是一样的）_
+
+
+
+
+
+### 2.4 encoder 总览&#x20;
 
 将得到的单词表示向量矩阵 (如上图所示，每一行是一个单词的表示 x) 传入 Encoder 中，经过 6 个 Encoder block 后可以得到句子所有单词的编码信息矩阵 C，如下图。单词向量矩阵用 Xn.d 表示， n 是句子中单词个数，d 是表示向量的维度 (论文中 d=512)。
 
 
 
-每一个 Encoder block 输出的矩阵维度与输入完全一致。
+&#x20;Encoder block 输出输出的维度一致
 
-<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+最后一个 Encoder block 输出的矩阵就是编码信息矩阵 C，这一矩阵后续会用到 Decoder 中。
+
+<figure><img src="../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
+
+### 2.5  Decoder
+
+需要根据之前的翻译，求解当前最有可能的翻译
+
+* 第一个 Multi-Head Attention 层采用了 Masked 操作。
+* 第二个 Multi-Head Attention 层的K, V矩阵使用 Encoder 的编码信息矩阵C进行计算，而Q使用上一个 Decoder block 的输出计算。
+* 最后有一个 Softmax 层计算下一个翻译单词的概率。
+
+#### 2.5.1 masked  Multi-Head Attention&#x20;
+
+防止第 i 个单词知道 i+1 个单词之后的信息 ,确保了顺序翻译
+
+使用了类似 Teacher Forcing 的概念
+
+
+
+\
+这五步后面再看Transformer模型详解（图解最完整版） - 初识CV的文章 - 知乎 https://zhuanlan.zhihu.com/p/338817680
+
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>输入矩阵与 Mask 矩阵</p></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+
+
+
+
+
+#### 2.5.2 第二个 Multi-Head Attention&#x20;
+
+区别： Self-Attention 的 K, V不是使用 上一个 Decoder block 的输出计算的，而是使用 Encoder 的编码信息矩阵 C 计算的。
+
+根据上一个 Decoder block 的输出 Z 计算 Q (如果是第一个 Decoder block 则使用输入矩阵 X 进行计算)
+
+
+
+这样做的好处是在 Decoder 的时候，每一位单词都可以利用到 Encoder 所有单词的信息 (这些信息无需 Mask)。
+
+
+
+
+
+#### 2.5.3 softmax
+
+预测下一个单词
+
+
+
+输出结构：
+
+<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 #### 1.1.3 decoder 预测部分
 
@@ -136,7 +221,7 @@ transofrmer类似于多头的注意力，约等于多输出通道
 
 使用编码器解码器架构
 
-<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### 1.inputs
 
@@ -173,8 +258,8 @@ transofrmer类似于多头的注意力，约等于多输出通道
 
 [https://www.zhihu.com/search?type=content\&q=tarnsformer](https://www.zhihu.com/search?type=content\&q=tarnsformer)
 
-{% file src="../.gitbook/assets/image (3) (1).png" %}
+{% file src="../.gitbook/assets/image (3) (1) (1).png" %}
 
-{% file src="../.gitbook/assets/image (9) (1).png" %}
+{% file src="../.gitbook/assets/image (9) (1) (1).png" %}
 
 {% embed url="https://arxiv.org/pdf/1706.03762.pdf" %}

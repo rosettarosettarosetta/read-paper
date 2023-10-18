@@ -6,13 +6,23 @@ description: A-T-T-E-N-T-I-O-N~         Attention is What I Want!
 
 ## 1.overview
 
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+
+各有6个block
+
 
 
 ## 2.整体结构
 
-### 2.1Encoder  Decoder :
+### 2.1Encoder  Decoder&#x20;
 
-<figure><img src="../.gitbook/assets/image (9) (1) (1).png" alt=""><figcaption><p>都包含 6 个 block</p></figcaption></figure>
+
+
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+
+
 
 
 
@@ -22,11 +32,15 @@ description: A-T-T-E-N-T-I-O-N~         Attention is What I Want!
 
 输入句子的 每一个单词的表示向量 X
 
-x由**词 Embedding** 和**位置 Embedding** （Positional Encoding）相加得到。
+x由[**词 Embedding**](transformer.md#2.word-embedding) 和**位置 Embedding** （Positional Encoding）相加得到。
 
 <figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
 **词 Embedding:**d 表示 PE的维度&#x20;
+
+
+
+
 
 
 
@@ -42,17 +56,17 @@ pos 表示单词在句子中的位置，d 表示 PE的维度 （编码向量的�
 
 **ex:**
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption><p>40个单词的序列的编码值</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9) (1).png" alt=""><figcaption><p>40个单词的序列的编码值</p></figcaption></figure>
 
 ### 2.2Self-Attention（自注意力机制）
 
 &#x20; Multi-Head Attention，是由多个 Self-Attention组成的
 
-<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption><p>location</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption><p>location</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Q(查询),K(键值),V(值)   矩阵&#x20;
 
@@ -60,13 +74,13 @@ Q(查询),K(键值),V(值)   矩阵&#x20;
 
 X, Q, K, V 的每一行都表示一个单词
 
-<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Self-Attention 的输出：
 
 公式中计算矩阵Q和K每一行向量的内积，为了防止内积过大，因此除以 dk的平方根。Q乘以K的转置后，得到的矩阵行列数都为 n，n 为句子单词数，这个矩阵可以表示单词之间的 attention 强度。
 
-<figure><img src="../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### 这一块儿先弃个坑，还没搞懂：
 
@@ -78,7 +92,7 @@ Transformer 之逐层介绍 - 鱼先生的文章 - 知乎 https://zhuanlan.zhihu
 
 ### 2.3Add & Norm     Feed Forward
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>结合A&#x26;M的位置看</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption><p>结合A&#x26;M的位置看</p></figcaption></figure>
 
 X表示 Multi-Head Attention 或者 Feed Forward 的输入
 
@@ -96,7 +110,7 @@ MultiHeadAttention(X) 和 FeedForward(X) 表示输出&#x20;
 
 
 
-**Feed Forward** 是一个两层的全连接层，第一层的激活函数为 Relu，第二层不使用激活函数，![](<../.gitbook/assets/image (1).png>)
+**Feed Forward** 是一个两层的全连接层，第一层的激活函数为 Relu，第二层不使用激活函数，![](<../.gitbook/assets/image (1) (1).png>)
 
 
 
@@ -116,7 +130,7 @@ _（没错～MultiHeadAttention 和 FeedForward的输出输入维度是一样的
 
 最后一个 Encoder block 输出的矩阵就是编码信息矩阵 C，这一矩阵后续会用到 Decoder 中。
 
-<figure><img src="../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### 2.5  Decoder
 
@@ -137,13 +151,13 @@ _（没错～MultiHeadAttention 和 FeedForward的输出输入维度是一样的
 \
 这五步后面再看Transformer模型详解（图解最完整版） - 初识CV的文章 - 知乎 https://zhuanlan.zhihu.com/p/338817680
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>输入矩阵与 Mask 矩阵</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>输入矩阵与 Mask 矩阵</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -187,7 +201,7 @@ _（没错～MultiHeadAttention 和 FeedForward的输出输入维度是一样的
 
 
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -227,7 +241,7 @@ transofrmer类似于多头的注意力，约等于多输出通道
 
 使用编码器解码器架构
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### 1.inputs
 
@@ -255,6 +269,23 @@ transofrmer类似于多头的注意力，约等于多输出通道
 * 使 PE 能够适应比训练集里面所有句子更长的句子，假设训练集里面最长的句子是有 20 个单词，突然来了一个长度为 21 的句子，则使用公式计算的方法可以计算出第 21 位的 Embedding。
 * 可以让模型容易地计算出相对位置，对于固定长度的间距 k，PE(pos+k) 可以用 PE(pos) 计算得到。因为 Sin(A+B) = Sin(A)Cos(B) + Cos(A)Sin(B), Cos(A+B) = Cos(A)Cos(B) - Sin(A)Sin(B)。
 
+
+
+### [2.Word Embedding](transformer.md#2.1.1-shu-ru-he-chu-li)
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>飞得越高的数值越大</p></figcaption></figure>
+
+可以运用于情感分析任务（如：大于等于0为正向情感、小于0为[负向情感](https://www.zhihu.com/search?q=%E8%B4%9F%E5%90%91%E6%83%85%E6%84%9F\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22434942001%22%7D)）
+
+对句子中情感的值加权平均
+
+词嵌入的过程=获取X的过程
+
+\
+最合乎直觉（intuition）的假设-[分布假设](https://www.zhihu.com/search?q=%E5%88%86%E5%B8%83%E5%81%87%E8%AE%BE\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22434942001%22%7D)：相似的词往往出现在同一环境中
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>正向词一堆，<a href="https://www.zhihu.com/search?q=%E8%B4%9F%E5%90%91%E8%AF%8D&#x26;search_source=Entity&#x26;hybrid_search_source=Entity&#x26;hybrid_search_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22434942001%22%7D">负向词</a>一堆，没有实意的词在一堆(is,to,by)</p></figcaption></figure>
+
 \
 
 
@@ -264,8 +295,8 @@ transofrmer类似于多头的注意力，约等于多输出通道
 
 [https://www.zhihu.com/search?type=content\&q=tarnsformer](https://www.zhihu.com/search?type=content\&q=tarnsformer)
 
-{% file src="../.gitbook/assets/image (3) (1) (1).png" %}
+{% file src="../.gitbook/assets/image (3) (1) (1) (1).png" %}
 
-{% file src="../.gitbook/assets/image (9) (1) (1).png" %}
+{% file src="../.gitbook/assets/image (9) (1) (1) (1).png" %}
 
 {% embed url="https://arxiv.org/pdf/1706.03762.pdf" %}

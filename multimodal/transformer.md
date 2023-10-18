@@ -82,11 +82,36 @@ Self-Attention 的输出：
 
 <figure><img src="../.gitbook/assets/image (8) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-#### 这一块儿先弃个坑，还没搞懂：
+####
 
-Transformer模型详解（图解最完整版） - 初识CV的文章 - 知乎 https://zhuanlan.zhihu.com/p/338817680
+<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption><p>1234 表示的是句子中的单词</p></figcaption></figure>
 
-Transformer 之逐层介绍 - 鱼先生的文章 - 知乎 https://zhuanlan.zhihu.com/p/604450283
+单词之间的attention强度
+
+公式中计算矩阵Q和K每一行向量的内积，为了防止内积过大，因此除以 的平方根。Q乘以K的转置后，得到的矩阵行列数都为 n，n 为句子单词数
+
+
+
+<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+
+使用 Softmax 计算     每一个单词对于其他单词的 attention 系数
+
+每一行进行 Softmax，每一行的和都变为 1.
+
+
+
+<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+
+得到 Softmax 矩阵之后可以和V相乘，得到最终的输出Z。\
+
+
+<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
+
+上图中 Softmax 矩阵的第 1 行表示单词 1 与其他所有单词的 attention 系数，最终单词 1 的输出 等于所有单词 i 的值 根据 attention 系数的比例加在一起得到
+
+####
+
+
 
 
 

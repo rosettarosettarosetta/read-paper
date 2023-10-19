@@ -138,6 +138,9 @@ https://www.zhihu.com/question/498364604/answer/2219725892
 
 相关项目整理：
 
-[https://zhuanlan.zhihu.com/p/630529550](https://zhuanlan.zhihu.com/p/630529550)
+{% embed url="https://zhuanlan.zhihu.com/p/630529550" %}
 
 {% embed url="https://browse.arxiv.org/pdf/2304.02643.pdf" fullWidth="false" %}
+
+
+

@@ -312,7 +312,7 @@ transofrmer类似于多头的注意力，约等于多输出通道
 <figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption><p>正向词一堆，<a href="https://www.zhihu.com/search?q=%E8%B4%9F%E5%90%91%E8%AF%8D&#x26;search_source=Entity&#x26;hybrid_search_source=Entity&#x26;hybrid_search_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22434942001%22%7D">负向词</a>一堆，没有实意的词在一堆(is,to,by)</p></figcaption></figure>
 
 \
-
+3.[卷积](https://www.zhihu.com/search?q=%E5%8D%B7%E7%A7%AF\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22356155277%22%7D)具有天然的先天优势（inductive bias）：平移等价性（translation equivariance）和局部性（locality）。而transformer虽然不并具备这些优势，但是transformer的核心[self-attention](https://www.zhihu.com/search?q=self-attention\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22356155277%22%7D)的优势不像卷积那样有固定且有限的感受野，self-attention操作可以获得long-range信息（相比之下CNN要通过不断堆积Conv layers来获取更大的感受野），但训练的难度就比CNN要稍大一些。
 
 
 

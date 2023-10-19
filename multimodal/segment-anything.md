@@ -54,7 +54,7 @@ zero-shot(零样本)和few-shot(少样本)的[泛化能力](https://www.zhihu.co
 
 scalability and powerful pretraining method
 
-用[MAE](https://openaccess.thecvf.com/content/CVPR2022/papers/He\_Masked\_Autoencoders\_Are\_Scalable\_Vision\_Learners\_CVPR\_2022\_paper.pdf) 和ViT
+用[MAE](https://openaccess.thecvf.com/content/CVPR2022/papers/He\_Masked\_Autoencoders\_Are\_Scalable\_Vision\_Learners\_CVPR\_2022\_paper.pdf) 和[ViT](segment-anything.md#1.vit)
 
 最低限度适应高分辨率的输入，该encoder在prompt encoder之前，对每张图像只运行一次。
 
@@ -62,7 +62,7 @@ scalability and powerful pretraining method
 
 _“Motivated by scalability and access to strong pre-training, we use an MAE \[47] pre-trained Vision Transformer (ViT) \[33] with minimal adaptations to process high resolution inputs, specifically a ViT-H/16 with 14×14 windowed attention and four equally-spaced global attention blocks, following \[62].”_
 
-
+vit:视觉编码器
 
 ### 2.2 prompt encoder
 
@@ -134,7 +134,11 @@ SAM先用公开数据集训练，然后再用新增的标注mask训练。随着�
 
 在1100万数据集上，生成了11亿高质量的mask。
 
+## Extended explanation：
 
+### 1.[ViT](segment-anything.md#h\_620355474\_3) :
+
+## reference:
 
 MAE：
 

@@ -56,7 +56,7 @@ pos 表示单词在句子中的位置，d 表示 PE的维度 （编码向量的�
 
 **ex:**
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (9) (1).png" alt=""><figcaption><p>40个单词的序列的编码值</p></figcaption></figure>
 
@@ -64,7 +64,7 @@ pos 表示单词在句子中的位置，d 表示 PE的维度 （编码向量的�
 
 &#x20; Multi-Head Attention，是由多个 Self-Attention组成的
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption><p>location</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption><p>location</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -135,7 +135,7 @@ MultiHeadAttention(X) 和 FeedForward(X) 表示输出&#x20;
 
 
 
-**Feed Forward** 是一个两层的全连接层，第一层的激活函数为 Relu，第二层不使用激活函数，![](<../.gitbook/assets/image (1) (1) (1).png>)
+**Feed Forward** 是一个两层的全连接层，第一层的激活函数为 Relu，第二层不使用激活函数，![](<../.gitbook/assets/image (1) (1) (1) (1).png>)
 
 
 
@@ -176,7 +176,7 @@ _（没错～MultiHeadAttention 和 FeedForward的输出输入维度是一样的
 \
 这五步后面再看Transformer模型详解（图解最完整版） - 初识CV的文章 - 知乎 https://zhuanlan.zhihu.com/p/338817680
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>输入矩阵与 Mask 矩阵</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption><p>输入矩阵与 Mask 矩阵</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -266,7 +266,7 @@ transofrmer类似于多头的注意力，约等于多输出通道
 
 使用编码器解码器架构
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 #### 1.inputs
 
@@ -298,7 +298,7 @@ transofrmer类似于多头的注意力，约等于多输出通道
 
 ### [2.Word Embedding](transformer.md#2.1.1-shu-ru-he-chu-li)
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>飞得越高的数值越大</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>飞得越高的数值越大</p></figcaption></figure>
 
 可以运用于情感分析任务（如：大于等于0为正向情感、小于0为[负向情感](https://www.zhihu.com/search?q=%E8%B4%9F%E5%90%91%E6%83%85%E6%84%9F\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22434942001%22%7D)）
 
@@ -309,7 +309,7 @@ transofrmer类似于多头的注意力，约等于多输出通道
 \
 最合乎直觉（intuition）的假设-[分布假设](https://www.zhihu.com/search?q=%E5%88%86%E5%B8%83%E5%81%87%E8%AE%BE\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22434942001%22%7D)：相似的词往往出现在同一环境中
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>正向词一堆，<a href="https://www.zhihu.com/search?q=%E8%B4%9F%E5%90%91%E8%AF%8D&#x26;search_source=Entity&#x26;hybrid_search_source=Entity&#x26;hybrid_search_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22434942001%22%7D">负向词</a>一堆，没有实意的词在一堆(is,to,by)</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption><p>正向词一堆，<a href="https://www.zhihu.com/search?q=%E8%B4%9F%E5%90%91%E8%AF%8D&#x26;search_source=Entity&#x26;hybrid_search_source=Entity&#x26;hybrid_search_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22434942001%22%7D">负向词</a>一堆，没有实意的词在一堆(is,to,by)</p></figcaption></figure>
 
 \
 
@@ -320,7 +320,7 @@ transofrmer类似于多头的注意力，约等于多输出通道
 
 [https://www.zhihu.com/search?type=content\&q=tarnsformer](https://www.zhihu.com/search?type=content\&q=tarnsformer)
 
-{% file src="../.gitbook/assets/image (3) (1) (1) (1).png" %}
+{% file src="../.gitbook/assets/image (3) (1) (1) (1) (1).png" %}
 
 {% file src="../.gitbook/assets/image (9) (1) (1) (1).png" %}
 

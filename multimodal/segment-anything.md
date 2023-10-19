@@ -44,7 +44,7 @@ zero-shot(零样本)和few-shot(少样本)的[泛化能力](https://www.zhihu.co
 
 ## 2.model
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 ### 2.1 image encoder（？） <a href="#h_620355474_3" id="h_620355474_3"></a>
 
@@ -69,9 +69,66 @@ scalability and powerful pretraining method
 * 文本：通过CLIP模型进行文本编码
 * mask:用输入图像1/4分辨率的mask，然后用(2,2)卷积核，[stride-2](https://www.zhihu.com/search?q=stride-2\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22620355474%22%7D)输出channel为4和16，再用(1,1)卷积核将channel升到256. mask 和iamge embedding通过element-wise相乘(逐元素相乘，可以理解成mask的feature对image的feature进行加权)
 
-### 2.3 mask decoder  
+### 2.3 mask decoder &#x20;
+
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 
+
+* 在prompt embeddings中插入一个可学习的token，用于[docoder](https://www.zhihu.com/search?q=docoder\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22620355474%22%7D)的输出。
+
+（1）prompt toekns+output tokens进行self attn,
+
+（2）用得到的token和image embedding进行 cross attn（token作为Q）
+
+（3）point-wise MLP 更新token
+
+（4）用image embedding和（3）的token进行cross atten（image embedding作为Q）
+
+重复上述步骤2次，再将attn再通过残差进行连接，最终输出masks和iou scores。
+
+为了解决输出模糊性问题(一个提示可能生成多个mask，比如衣服上的一个点，既可以表示衣服，也表示穿衣服的人)，预测输出多个masks(发现\*\*整体，部分，子部分\*\*已经足够描述mask)，在训练过程中,只回传最小的[loss](https://www.zhihu.com/search?q=loss\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22620355474%22%7D)，为了对mask进行排序，增加一个小的head预测mask和目标的iou。
+
+当输入多个提示时，生成的mask会比较接近，为了减少loss退化和确保获取明确的mask，此时只预测一个mask（作为第4个预测mask，只有多个提示时才预测，当单个提示时不用）
+
+
+
+
+
+### 2.4 [模型训练](https://www.zhihu.com/search?q=%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22620355474%22%7D) <a href="#h_620355474_6" id="h_620355474_6"></a>
+
+训练时模拟交互分割的过程，从目标mask中随机选取前景点或者box，点是从[gt mask](https://www.zhihu.com/search?q=gt%20mask\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22620355474%22%7D)选取，box增加长边10%的噪声，最大20像素。
+
+在第一次prompt预测mask之后，后续是从预测mask和gt mask有差异的区域采样点，如果新生成的点是FN，则作为前景，如果是FP，则作为背景。同时，将预测的mask（unthresholded mask logits代替二值化的mask,不过滤阈值，默认为0），作为prompt作为迭代。
+
+训练过程中，发现用8个采样点比较合适(对比16个，没有明显增益)，为了鼓励模型从mask中获益，其中2个迭代不用新采样的点，总共11个迭代，1一个是初始化的prompt输入，然后是8个上述迭代，再加2个不重新采样点的迭代（这样可以refine mask）。由于mask decoder比较轻，所以可以进行更多次的迭代。
+
+\
+\
+
+
+3.data engine（数据引擎）\
+\
+
+
+
+* 辅助人工标注
+
+通过SAM基于浏览器的交互式分割工具，通过“brush”和"eraser"工具，进行标注。模型可以实时输出mask，建议标注者优先标记他们命名的对象，按图层顺序标记，如果一个mask标记超过30s，先处理下一张。
+
+SAM先用公开数据集训练，然后再用新增的标注mask训练。随着数据越多，image-encoder的能力越强，retrained了6次。随着模型改进，每个mask平均标注时间从34s到14s，平均每张图像mask从22增加到44个。在这个过程中，从12万图像中，收集了430万个mask。
+
+* 半自动
+
+增加mask的多样性，首先检测出可信的mask，然后用预测mask填充图像，让标注者标注未标记的mask。为了检测可信的mask,先用第一步的mask训练了一个类别一样的box检测器。半自动过程中，从18万张图像中生成了590万个mask。用新收集的数据，重新训练模型，平均标注时间又回到了34s,因为新的mask都是比较有难度的。每张图像上mask从44增加到72。
+
+* 全自动
+
+利用前2步，得到的大量的和多样性的mask，结合模型可以根据不明确的输入也能输出有效的mask（参考mask encoder）,对图像生成（32,32）个格网点，每个点预测一系列mask，如果一个点落在部分、子部分上，模型返回部分、子部分和整体的object。同时，通过预测的iou筛选 _confident_(可信的mask),选取一个_stable_的mask(稳定的mask,在相似的mask中，概率阈值在 0.5-δ和 0.5-δ之间)；最后，通过nms过滤_confident_和_stable_中重复的mask。
+
+为了提高mask比较小的，还通过放大图像进行crop，处理多个mask覆盖的情况。
+
+在1100万数据集上，生成了11亿高质量的mask。
 
 
 

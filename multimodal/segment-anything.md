@@ -6,6 +6,8 @@
 
 zero-shot(零样本)和few-shot(少样本)的[泛化能力](https://www.zhihu.com/search?q=%E6%B3%9B%E5%8C%96%E8%83%BD%E5%8A%9B\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22620355474%22%7D)
 
+交互性---快速
+
 ### 1.2 零样本的实现-提示工程prompt engineering
 
 提示的形式不同（点、框、语言）
@@ -137,6 +139,12 @@ SAM先用公开数据集训练，然后再用新增的标注mask训练。随着�
 ## Extended explanation：
 
 ### 1.[ViT](segment-anything.md#h\_620355474\_3) :
+
+机制：ViT模型只是用了transformer的Encoder来提取特征
+
+将图像分为无数小块（patches）
+
+<figure><img src="../.gitbook/assets/image (25).png" alt=""><figcaption></figcaption></figure>
 
 ## reference:
 

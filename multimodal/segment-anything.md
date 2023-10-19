@@ -40,7 +40,26 @@ zero-shot(零样本)和few-shot(少样本)的[泛化能力](https://www.zhihu.co
 
 <figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
 
-\
 
+
+## 2.model
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+### 2.1 image encoder <a href="#h_620355474_3" id="h_620355474_3"></a>
+
+
+
+scalability and powerful pretraining method
+
+用[MAE](https://openaccess.thecvf.com/content/CVPR2022/papers/He\_Masked\_Autoencoders\_Are\_Scalable\_Vision\_Learners\_CVPR\_2022\_paper.pdf) 和ViT
+
+最低限度适应高分辨率的输入，该encoder在prompt encoder之前，对每张图像只运行一次。
+
+
+
+相关项目整理：
+
+[https://zhuanlan.zhihu.com/p/630529550](https://zhuanlan.zhihu.com/p/630529550)
 
 {% embed url="https://browse.arxiv.org/pdf/2304.02643.pdf" fullWidth="false" %}

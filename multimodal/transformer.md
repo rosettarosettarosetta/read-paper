@@ -56,7 +56,7 @@ pos 表示单词在句子中的位置，d 表示 PE的维度 （编码向量的�
 
 **ex:**
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (9) (1).png" alt=""><figcaption><p>40个单词的序列的编码值</p></figcaption></figure>
 
@@ -135,7 +135,7 @@ MultiHeadAttention(X) 和 FeedForward(X) 表示输出&#x20;
 
 
 
-**Feed Forward** 是一个两层的全连接层，第一层的激活函数为 Relu，第二层不使用激活函数，![](<../.gitbook/assets/image (1) (1) (1) (1).png>)
+**Feed Forward** 是一个两层的全连接层，第一层的激活函数为 Relu，第二层不使用激活函数，![](<../.gitbook/assets/image (1) (1) (1) (1) (1).png>)
 
 
 
@@ -298,7 +298,7 @@ transofrmer类似于多头的注意力，约等于多输出通道
 
 ### [2.Word Embedding](transformer.md#2.1.1-shu-ru-he-chu-li)
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>飞得越高的数值越大</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>飞得越高的数值越大</p></figcaption></figure>
 
 可以运用于情感分析任务（如：大于等于0为正向情感、小于0为[负向情感](https://www.zhihu.com/search?q=%E8%B4%9F%E5%90%91%E6%83%85%E6%84%9F\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22434942001%22%7D)）
 

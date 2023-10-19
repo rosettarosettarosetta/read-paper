@@ -6,7 +6,9 @@
 
 zero-shot(零样本)和few-shot(少样本)的[泛化能力](https://www.zhihu.com/search?q=%E6%B3%9B%E5%8C%96%E8%83%BD%E5%8A%9B\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22620355474%22%7D)
 
-### 1.2 零样本的实现
+### 1.2 零样本的实现-提示工程prompt engineering
+
+提示的形式不同（点、框、语言）
 
 通过提示输入，生成有效的mask
 
@@ -56,13 +58,17 @@ scalability and powerful pretraining method
 
 最低限度适应高分辨率的输入，该encoder在prompt encoder之前，对每张图像只运行一次。
 
+图像进行降采样：图像编码器的输出是输入图像的16倍降采样的嵌入。
 
+_“Motivated by scalability and access to strong pre-training, we use an MAE \[47] pre-trained Vision Transformer (ViT) \[33] with minimal adaptations to process high resolution inputs, specifically a ViT-H/16 with 14×14 windowed attention and four equally-spaced global attention blocks, following \[62].”_
 
 
 
 ### 2.2 prompt encoder
 
 分成2类：稀疏的(点，box，文本)，稠密的（mask）
+
+稀疏提示被映射为256维的向量嵌入 ，一个点被表示为其位置的位置编码与两个学习到的嵌入之和，这两个嵌入指示该点是在前景还是背景中（_one of two learned embeddings that indicate if the point is either in the foreground or background._）
 
 * point:映射到256维的向量，包含代表点位置的 positional encoding，加2个代表该点是前景/背景的可学习的embedding。
 * box:用一个[embedding](https://www.zhihu.com/search?q=embedding\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22620355474%22%7D)对表示（1）可学习的embedding代表左上角（2）可学习的embedding代表右下角
@@ -71,9 +77,7 @@ scalability and powerful pretraining method
 
 ### 2.3 mask decoder &#x20;
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
-
-
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 * 在prompt embeddings中插入一个可学习的token，用于[docoder](https://www.zhihu.com/search?q=docoder\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22620355474%22%7D)的输出。
 

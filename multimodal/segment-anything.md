@@ -46,7 +46,7 @@ zero-shot(零样本)和few-shot(少样本)的[泛化能力](https://www.zhihu.co
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-### 2.1 image encoder <a href="#h_620355474_3" id="h_620355474_3"></a>
+### 2.1 image encoder（？） <a href="#h_620355474_3" id="h_620355474_3"></a>
 
 
 
@@ -57,6 +57,27 @@ scalability and powerful pretraining method
 最低限度适应高分辨率的输入，该encoder在prompt encoder之前，对每张图像只运行一次。
 
 
+
+
+
+### 2.2 prompt encoder
+
+分成2类：稀疏的(点，box，文本)，稠密的（mask）
+
+* point:映射到256维的向量，包含代表点位置的 positional encoding，加2个代表该点是前景/背景的可学习的embedding。
+* box:用一个[embedding](https://www.zhihu.com/search?q=embedding\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22620355474%22%7D)对表示（1）可学习的embedding代表左上角（2）可学习的embedding代表右下角
+* 文本：通过CLIP模型进行文本编码
+* mask:用输入图像1/4分辨率的mask，然后用(2,2)卷积核，[stride-2](https://www.zhihu.com/search?q=stride-2\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22620355474%22%7D)输出channel为4和16，再用(1,1)卷积核将channel升到256. mask 和iamge embedding通过element-wise相乘(逐元素相乘，可以理解成mask的feature对image的feature进行加权)
+
+### 2.3 mask decoder  
+
+
+
+
+
+MAE：
+
+https://www.zhihu.com/question/498364604/answer/2219725892
 
 相关项目整理：
 

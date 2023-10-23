@@ -6,6 +6,8 @@ description: CNN+医学图像分割的SAM
 
 ## [https://arxiv.org/pdf/2306.12737.pdf](https://arxiv.org/pdf/2306.12737.pdf)
 
+## git:[https://github.com/11yxk/SAM-LST](https://github.com/11yxk/SAM-LST)
+
 ## Segment Anything Model (SAM)（图像分割）医学图像与CNN结合
 
 ## 运用的模型：

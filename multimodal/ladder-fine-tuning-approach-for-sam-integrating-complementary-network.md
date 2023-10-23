@@ -8,6 +8,8 @@ description: CNN+医学图像分割的SAM
 
 ## git:[https://github.com/11yxk/SAM-LST](https://github.com/11yxk/SAM-LST)
 
+## data :[https://github.com/hitachinsk/SAMed](https://github.com/hitachinsk/SAMed)
+
 ## Segment Anything Model (SAM)（图像分割）医学图像与CNN结合
 
 ## 运用的模型：
@@ -46,7 +48,29 @@ include:image encoder, prompt encoder and mask decoder
 
 掩码解码器：掩码解码器是一个生成模型的组件，用于生成目标图像或以图像为基础进行图像编辑的掩码。它接收图像编码器和提示编码器的输出，并生成一个掩码，指示生成图像中的目标对象或要编辑的区域。掩码解码器可以是一个生成对抗网络（GAN）或变分自动编码器（VAE），它使用编码器的输出来生成与输入提示相关的图像。
 
-##
+
+
+
+
+## Ladder-Side Tuning with SAM：
+
+aim：avoiding the backpropagation through entire SAM model
+
+我们只更新SAM解码器和集成CNN网络的参数，以在医学数据集上微调SAM模型。
+
+设计遵循ResNet18 \[18]，包括跳跃连接。然而，为了生成与SAM编码器相同大小的特征图，该网络经过修改，只使用了13层而不是全部18层（ResNet18包含18个卷积层）。
+
+
+
+我们提议在组合这两个提取的特征图时加入可学习的门控（权重参数）α：
+
+x = α · xsam + (1 − α) · xcnn
+
+
+
+
+
+## Ablation study 消融实验
 
 {% embed url="https://arxiv.org/pdf/2306.12737.pdf" %}
 

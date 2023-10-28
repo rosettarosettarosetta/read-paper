@@ -20,3 +20,4 @@
   * [✍ Transformer](sam/transformer.md)
   * [✍ long-term dependency](sam/nlp-long-term-dependency.md)
   * [🧷 reference](sam/reference.md)
+  * [supervision](sam/supervision.md)

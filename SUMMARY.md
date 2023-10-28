@@ -20,4 +20,5 @@
   * [✍ Transformer](sam/transformer.md)
   * [✍ long-term dependency](sam/nlp-long-term-dependency.md)
   * [🧷 reference](sam/reference.md)
-  * [supervision](sam/supervision.md)
+  * [supervision](sam/supervision/README.md)
+    * [SegFormer（for Transformers）](sam/supervision/segformer-for-transformers.md)

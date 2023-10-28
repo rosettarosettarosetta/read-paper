@@ -34,3 +34,9 @@ description: https://arxiv.org/pdf/2304.12306.pdf
 ## 汇总：
 
 Segment Anything(sam)项目整理汇总\[2023.9.2] - yeyan的文章 - 知乎 https://zhuanlan.zhihu.com/p/630529550
+
+
+
+## 【arxiv】关于 SAM 的论文扫读（一）: <a href="#articlecontentid" id="articlecontentid"></a>
+
+[https://blog.csdn.net/wzk4869/article/details/130814850?ops\_request\_misc=\&request\_id=\&biz\_id=102\&utm\_term=%E7%9B%91%E7%9D%A3%20sam\&utm\_medium=distribute.pc\_search\_result.none-task-blog-2\~all\~sobaiduweb\~default-0-130814850.142^v96^pc\_search\_result\_base6\&spm=1018.2226.3001.4187](https://blog.csdn.net/wzk4869/article/details/130814850?ops\_request\_misc=\&request\_id=\&biz\_id=102\&utm\_term=%E7%9B%91%E7%9D%A3%20sam\&utm\_medium=distribute.pc\_search\_result.none-task-blog-2\~all\~sobaiduweb\~default-0-130814850.142^v96^pc\_search\_result\_base6\&spm=1018.2226.3001.4187)

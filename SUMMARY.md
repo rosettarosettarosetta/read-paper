@@ -22,3 +22,4 @@
   * [🧷 reference](sam/reference.md)
   * [supervision](sam/supervision/README.md)
     * [SegFormer（for Transformers）](sam/supervision/segformer-for-transformers.md)
+    * [original supervision for sam](sam/supervision/original-supervision-for-sam.md)

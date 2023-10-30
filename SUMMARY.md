@@ -24,3 +24,4 @@
     * [SegFormer（for Transformers）](sam/supervision/segformer-for-transformers.md)
     * [original supervision for sam](sam/supervision/original-supervision-for-sam.md)
     * [Zero Shot](sam/supervision/zero-shot.md)
+    * [abstract](sam/supervision/abstract.md)

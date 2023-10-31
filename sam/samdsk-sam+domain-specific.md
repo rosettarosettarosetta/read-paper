@@ -70,6 +70,36 @@ description: https://arxiv.org/pdf/2308.13759.pdf
 
 
 
+## 3 Methodology
+
+我们的SamDSK模型的输入由四个部分组成：一个带标签的图像集合D = {(x1, y1)，(x2, y2)，...，(xn, yn)}，一个未标记的图像集合U = {u1，u2，...，um}，Segment Anything Model（SAM）和一个医学图像分割模型M。
+
+医学图像分割模型M的编码器使用ImageNet \[9]预训练的权重进行初始化，解码器随机初始化。
+
+在3.2、3.3和3.4节中，我们描述了生成未标记图像注释的关键步骤（步骤3）。在3.5节中，我们介绍了使用人工标记和机器标记图像进行分割模型训练的过程。在3.6节中，我们分析了我们提出的多轮SSL方法的动态特性。最后，在3.7节中，我们讨论了SamDSK适用于的几个医学图像分割任务。
+
+<figure><img src="../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
+
+### 3.1 Applying SAM to Unlabeled Medical Images
+
+我们将最先进的SAM应用于这些图像，以获得每个图像的分割提案。
+
+
+
+一个关键考虑因素是在SAM中使用相对较低的阈值设置，以确保生成的分割提案中包含所有潜在的感兴趣区域（RoIs）。默认情况下，当使用SAM时，我们使用以下参数值：“crop nms threshold = 0.5，box nms thresh = 0.5，pred iou thresh = 0.5，stability score thresh = 0.5”。
+
+
+
+### 3.2 Matching Segmentation Proposals with Pixel-level DSK
+
+
+
+<figure><img src="../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
+
+
+
+
+
 
 
 {% embed url="https://arxiv.org/pdf/2308.13759.pdf" %}

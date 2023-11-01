@@ -40,7 +40,7 @@ description: https://arxiv.org/pdf/2308.13759.pdf
 
 具体而言，假设我们最初提供了一个标记的图像集合给我们的方法。我们使用这些标记图像训练一个初始的医学图像分割模型。然后，我们将训练好的模型应用于未标记图像，并为所有未标记图像获取分割概率图。我们将这些图称为像素级领域特定知识（pixel-level DSK）。我们进一步引入了一种高级的领域特定知识，称为**图像级DSK**，其中包括分割任务的先验知识，例如每个分割类别在图像中可能的感兴趣区域（Regions of Interests，RoIs）数量。对于一个未标记图像，我们执行一个优化过程，通过将由SAM生成的分割建议与像素级DSK进行匹配，并受到图像级DSK的约束，构建其分割注释。通过上述匹配过程获取分割注释的未标记图像根据最优匹配分数进行检查，那些具有高匹配分数的图像（带有构建的注释）将被添加到标记集中，作为下一轮分割模型训练的机器标记样本。由于更多的标记数据可用，每轮训练中分割模型都会进一步改进，通过多轮的注释获取和模型训练/重新训练，我们期望将具有高质量分割的更多未标记样本添加到标记集中，从而获得更好的医学图像分割模型。
 
-<figure><img src="../.gitbook/assets/image (30).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (30).png" alt=""><figcaption></figcaption></figure>
 
 为了更有效地利用SAM，Ma等人\[16]提出使用标记图像对SAM进行微调。Wu等人\[26]提出添加额外的层来适应医学图像分割任务的SAM。我们的工作旨在利用SAM进行医学图像分割模型的半监督学习。
 
@@ -78,7 +78,7 @@ description: https://arxiv.org/pdf/2308.13759.pdf
 
 在3.2、3.3和3.4节中，我们描述了生成未标记图像注释的关键步骤（步骤3）。在3.5节中，我们介绍了使用人工标记和机器标记图像进行分割模型训练的过程。在3.6节中，我们分析了我们提出的多轮SSL方法的动态特性。最后，在3.7节中，我们讨论了SamDSK适用于的几个医学图像分割任务。
 
-<figure><img src="../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
 
 ### 3.1 Applying SAM to Unlabeled Medical Images
 
@@ -94,7 +94,7 @@ description: https://arxiv.org/pdf/2308.13759.pdf
 
 
 
-<figure><img src="../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
 
 
 

@@ -25,4 +25,5 @@
     * [original supervision for sam](sam/supervision/original-supervision-for-sam.md)
     * [Zero Shot](sam/supervision/zero-shot.md)
     * [abstract](sam/supervision/abstract.md)
-  * [💡 SamDSK（sam+Domain-Specific ）](sam/samdsk-sam+domain-specific.md)
+  * [💡 SamDSK（sam+Domain-Specific ）](sam/samdsk-sam+domain-specific/README.md)
+    * [翻译](sam/samdsk-sam+domain-specific/fan-yi.md)

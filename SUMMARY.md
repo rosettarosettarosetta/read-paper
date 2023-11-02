@@ -27,3 +27,5 @@
     * [abstract](sam/supervision/abstract.md)
   * [💡 SamDSK（sam+Domain-Specific ）](sam/samdsk-sam+domain-specific/README.md)
     * [翻译](sam/samdsk-sam+domain-specific/fan-yi.md)
+* [conference](conference/README.md)
+  * [11.2](conference/11.2.md)

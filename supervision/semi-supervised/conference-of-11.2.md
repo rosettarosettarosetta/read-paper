@@ -1,4 +1,4 @@
-# 11.2
+# ✍ conference of 11.2
 
 ### 两个方法:PL,CL
 
@@ -22,11 +22,13 @@ p(x)为输入样本的分布      p(y|x) 表示在给定某个样本的情况下
 
 基于假设：_smoothness assumption：对于x_,x′∈X 并且非常的接近，那么他们所对应的标签 y,y′ 是相同的。
 
+_Low-density assumption（略，感觉无关）_一个好的决策边界应该尽可能通过这种样本稀疏的区域（[低密度区域](https://www.zhihu.com/search?q=%E4%BD%8E%E5%AF%86%E5%BA%A6%E5%8C%BA%E5%9F%9F\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22433751531%22%7D)），这样才能更好地区分不同类别的样本 （详见reference1）
+
 ### PL：伪标签
 
 利用已有全监督模型生成伪标签
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 伪标签使用带有 Dropout 的微调阶段，可以将预训练的网络以有监督的方式同时使用标记和未标记的数据进行训练。
 
@@ -49,11 +51,27 @@ FixMatch
 
 ## REFERENCR:
 
-1. CL 基础讲解
+1. CL 基础讲解（有一些进阶的论文部分没看）
 
 {% embed url="https://zhuanlan.zhihu.com/p/433751531" %}
 
 2\.
 
+：
+
+
+
+
+
+## ABSTRACT：
+
+1.Semi-Supervised Semantic Segmentation with Cross Pseudo Supervision（CVPR2021）
+
+[交叉伪监督](https://www.zhihu.com/search?q=%E4%BA%A4%E5%8F%89%E4%BC%AA%E7%9B%91%E7%9D%A3\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22433751531%22%7D)（一种新的、简单的网络扰动一致性[正则化方法](https://www.zhihu.com/search?q=%E6%AD%A3%E5%88%99%E5%8C%96%E6%96%B9%E6%B3%95\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22433751531%22%7D)）&#x20;
+
+交叉伪监督两个目的：鼓励两个[扰动网络](https://www.zhihu.com/search?q=%E6%89%B0%E5%8A%A8%E7%BD%91%E7%BB%9C\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22433751531%22%7D)对同一输入图像的预测高度相似（Consistency learning），并使用带有伪标签的未标记数据扩展训练数据（self-training）。
+
+\
+\
 
 

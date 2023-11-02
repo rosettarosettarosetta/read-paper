@@ -21,6 +21,6 @@ the network first encodes a 14 sentence-length sequence of neural activity into 
 
 
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 {% embed url="https://www.biorxiv.org/content/10.1101/708206v1.full.pdf" %}

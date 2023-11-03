@@ -48,7 +48,7 @@ zero-shot(零样本)和few-shot(少样本)的[泛化能力](https://www.zhihu.co
 
 ## 2.model
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### 2.1 image encoder（？） <a href="#h_620355474_3" id="h_620355474_3"></a>
 
@@ -79,7 +79,7 @@ vit:视觉编码器
 
 ### 2.3 mask decoder &#x20;
 
-<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * 在prompt embeddings中插入一个可学习的token，用于[docoder](https://www.zhihu.com/search?q=docoder\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22620355474%22%7D)的输出。
 

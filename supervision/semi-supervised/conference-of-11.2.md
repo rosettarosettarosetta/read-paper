@@ -28,7 +28,7 @@ _Low-density assumption（略，感觉无关）_一个好的决策边界应该�
 
 利用已有全监督模型生成伪标签
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 伪标签使用带有 Dropout 的微调阶段，可以将预训练的网络以有监督的方式同时使用标记和未标记的数据进行训练。
 

@@ -4,7 +4,7 @@
 
 ### Curriculum Labeling (CL)：
 
-利用一致性，如teacher/student输出一致、数据增强后预测结果应一致
+利用**一致性**，如teacher/student输出一致、数据增强后预测结果应一致
 
 通过在每个自学习周期之前重新启动模型参数来避免[概念漂移](https://www.zhihu.com/search?q=%E6%A6%82%E5%BF%B5%E6%BC%82%E7%A7%BB\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22530860794%22%7D)
 
@@ -20,6 +20,10 @@ p(x)为输入样本的分布      p(y|x) 表示在给定某个样本的情况下
 
 主要思想：对于同一样本经过不同的变换或扰动后，网络对变换（扰动）前后的输出应是相似的。
 
+或者说：
+
+即使在无标签的样本被注入噪声之后，分类器也应该为其输出相同的类分布概率。即强制一个无标签的样本，应该被分类为与自身的增强 相同的分类
+
 基于假设：_smoothness assumption：对于x_,x′∈X 并且非常的接近，那么他们所对应的标签 y,y′ 是相同的。
 
 _Low-density assumption（略，感觉无关）_一个好的决策边界应该尽可能通过这种样本稀疏的区域（[低密度区域](https://www.zhihu.com/search?q=%E4%BD%8E%E5%AF%86%E5%BA%A6%E5%8C%BA%E5%9F%9F\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22433751531%22%7D)），这样才能更好地区分不同类别的样本 （详见reference1）
@@ -28,7 +32,7 @@ _Low-density assumption（略，感觉无关）_一个好的决策边界应该�
 
 利用已有全监督模型生成伪标签
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 伪标签使用带有 Dropout 的微调阶段，可以将预训练的网络以有监督的方式同时使用标记和未标记的数据进行训练。
 

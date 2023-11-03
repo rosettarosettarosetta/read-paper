@@ -29,9 +29,28 @@ FixMatch的核心：
 
 
 
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+
+
+利用一张无标签样本，分别进行：
+
+* “弱”增强（翻转、缩放）
+* “强”增强（CutOut、CTAugment、RandAugment),
+
+
+
+* 然后，通过model得到预测标签
+* 并，通过标准交叉熵损失计算损失
+
 \
 
 
+上述“弱“增强方式预测过程，需要设定一个阈值大于阈值的才计算loss，小于的就不计算
+
+相当于，在前期训练阶段中，无标签样本损失可能一直是为0的
+
+\
 
 
 {% embed url="https://arxiv.org/abs/2001.07685" %}
@@ -39,3 +58,12 @@ FixMatch的核心：
 {% endembed %}
 
 [https://github.com/google-research/fixmatch](https://github.com/google-research/fixmatch)
+
+## REFERENCE：
+
+1\.
+
+{% embed url="https://www.zhihu.com/question/457133996/answer/2672409953" %}
+
+
+

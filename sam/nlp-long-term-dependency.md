@@ -20,9 +20,9 @@ description: cnn,rnn,transformer
 
 #### shorts:过程太间接了，因为信息在网络中实际传播了太多层。究竟哪些信息被保留，哪些被丢弃了，弄不清楚。
 
-{% file src="../.gitbook/assets/image (5) (1) (1) (1) (1).png" %}
+{% file src="../.gitbook/assets/image (5) (1) (1) (1) (1) (1).png" %}
 
-<figure><img src="../.gitbook/assets/image (5) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ##
 

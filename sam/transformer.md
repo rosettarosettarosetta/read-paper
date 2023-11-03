@@ -6,7 +6,7 @@ description: A-T-T-E-N-T-I-O-N~         Attention is What I Want!
 
 ## 1.overview
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -66,7 +66,7 @@ pos 表示单词在句子中的位置，d 表示 PE的维度 （编码向量的�
 
 <figure><img src="../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>location</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (4) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Q(查询),K(键值),V(值)   矩阵&#x20;
 
@@ -74,7 +74,7 @@ Q(查询),K(键值),V(值)   矩阵&#x20;
 
 X, Q, K, V 的每一行都表示一个单词
 
-<figure><img src="../.gitbook/assets/image (5) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Self-Attention 的输出：
 
@@ -178,7 +178,7 @@ _（没错～MultiHeadAttention 和 FeedForward的输出输入维度是一样的
 
 <figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>输入矩阵与 Mask 矩阵</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (8) (1) (1).png" alt=""><figcaption></figcaption></figure>
 

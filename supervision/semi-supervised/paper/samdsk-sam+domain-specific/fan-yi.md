@@ -78,13 +78,13 @@ Wu等人\[27]提出了互相关一致性学习（Mutual Consistency Learning，M
 
 在图3中，我们提供了一个高级示意图，说明了我们用于最优匹配形式的机制。等式（1）中的优化问题（附带等式（2）中的约束条件）是一个最大二分匹配问题，可以在多项式时间内高效解决\[3]。
 
-<figure><img src="../../../../.gitbook/assets/image (4).png" alt=""><figcaption><p>Figure 4: Image examples of polyp segmentation ((a) and (b)), skin lesion segmentation ((c) and (d)), and breast cancer segmentation ((e) and (f)). Row 1: raw images. Row 2: ground truth annotations. Row 3: Boundary maps of the SAM-generated segmentation proposals.</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (4) (1).png" alt=""><figcaption><p>Figure 4: Image examples of polyp segmentation ((a) and (b)), skin lesion segmentation ((c) and (d)), and breast cancer segmentation ((e) and (f)). Row 1: raw images. Row 2: ground truth annotations. Row 3: Boundary maps of the SAM-generated segmentation proposals.</p></figcaption></figure>
 
 ### 3.3 Incorporating Image-level DSK
 
 在本节中，我们旨在通过将图像级别的DSK作为新的约束条件添加到最优匹配形式中，以提高上述提出的分割注释构建的效果和可靠性。假设给定医学图像分割任务的图像的RoI数目范围从v\_lower\_c到v\_upper\_c，对于类别c，我们将这些约束条件添加到等式（2）中。优化目标保持不变，但约束条件根据v\_lower\_c和v\_upper\_c进行了更新。形式上，我们的目标是优化等式（1）中的目标，满足以下约束条件：
 
-<figure><img src="../../../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 在模型训练和标记集扩展的每一轮中，我们控制v\_lower\_c和v\_upper\_c的值，以确保稳定地逐渐将具有更多RoIs的样本纳入标记集。对于第一轮，我们可以将v\_lower\_c和v\_upper\_c都设置为1。这表示最优匹配只是分割建议和概率图之间的一对一匹配。在第二轮中，我们可以将v\_lower\_c设置为1，将v\_upper\_c设置为2，以允许两个分割建议匹配一个概率图。根据具体的分割任务，我们可以使用较大的增量v\_upper\_c，以更有效地将未标记样本纳入标记集。
 

@@ -1,6 +1,6 @@
 # ✍ CL \PL (conf 2)
 
-半监督综述：[https://arxiv.org/pdf/2103.00550.pdf](https://arxiv.org/pdf/2103.00550.pdf)
+
 
 ### 两个方法:PL,CL
 

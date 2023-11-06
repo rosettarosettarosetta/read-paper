@@ -21,7 +21,7 @@
   * [✍ long-term dependency](sam/nlp-long-term-dependency.md)
   * [🧷 reference](sam/reference.md)
 * [conference](conference/README.md)
-  * [Page 1](conference/page-1.md)
+  * [11.3](conference/page-1.md)
 * [✅ supervision](supervision/README.md)
   * [Zero Shot](supervision/zero-shot.md)
   * [✅ semi-supervised](supervision/semi-supervised/README.md)

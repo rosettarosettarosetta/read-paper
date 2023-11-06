@@ -1,6 +1,10 @@
 # ✍ CL \PL (conf 2)
 
+半监督综述：[https://arxiv.org/pdf/2103.00550.pdf](https://arxiv.org/pdf/2103.00550.pdf)
+
 ### 两个方法:PL,CL
+
+
 
 ### Curriculum Labeling (CL)：
 
@@ -27,6 +31,14 @@ p(x)为输入样本的分布      p(y|x) 表示在给定某个样本的情况下
 基于假设：_smoothness assumption：对于x_,x′∈X 并且非常的接近，那么他们所对应的标签 y,y′ 是相同的。
 
 _Low-density assumption（略，感觉无关）_一个好的决策边界应该尽可能通过这种样本稀疏的区域（[低密度区域](https://www.zhihu.com/search?q=%E4%BD%8E%E5%AF%86%E5%BA%A6%E5%8C%BA%E5%9F%9F\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22433751531%22%7D)），这样才能更好地区分不同类别的样本 （详见reference1）
+
+
+
+reference：
+
+[https://arxiv.org/pdf/2001.06001.pdf](https://arxiv.org/pdf/2001.06001.pdf)
+
+{% embed url="https://arxiv.org/pdf/2001.06001.pdf" %}
 
 ### PL：伪标签
 
@@ -61,9 +73,11 @@ FixMatch
 
 2\.
 
-：
+{% embed url="https://zhuanlan.zhihu.com/p/451889072" %}
 
+3\.
 
+{% embed url="https://blog.csdn.net/ssjq123/article/details/125245535?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169926433716800180663270%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=169926433716800180663270&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-125245535-null-null.142^v96^pc_search_result_base5&utm_term=%E5%8D%8A%E7%9B%91%E7%9D%A3%20%E7%BB%BC%E8%BF%B0&spm=1018.2226.3001.4187" %}
 
 
 

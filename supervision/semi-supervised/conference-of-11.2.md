@@ -1,10 +1,10 @@
-# ✍ conference of 11.2
+# ✍ CL \PL (conf 2)
 
 ### 两个方法:PL,CL
 
 ### Curriculum Labeling (CL)：
 
-利用**一致性**，如teacher/student输出一致、数据增强后预测结果应一致
+利用**一致性正则化**，如teacher/student输出一致、数据增强后预测结果应一致
 
 通过在每个自学习周期之前重新启动模型参数来避免[概念漂移](https://www.zhihu.com/search?q=%E6%A6%82%E5%BF%B5%E6%BC%82%E7%A7%BB\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22530860794%22%7D)
 

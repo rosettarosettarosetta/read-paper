@@ -20,7 +20,7 @@
   * [✍ Transformer](sam/transformer.md)
   * [✍ long-term dependency](sam/nlp-long-term-dependency.md)
   * [🧷 reference](sam/reference.md)
-* [conference](conference/README.md)
+* [😏 conference](conference/README.md)
   * [11.3](conference/page-1.md)
 * [✅ supervision](supervision/README.md)
   * [Zero Shot](supervision/zero-shot.md)
@@ -34,3 +34,4 @@
     * [FixMatch](supervision/semi-supervised/fixmatch.md)
     * [Mean Teachers](supervision/semi-supervised/mean-teachers.md)
   * [🧷 abstract](supervision/abstract.md)
+* [calendar for push me up](calendar-for-push-me-up.md)

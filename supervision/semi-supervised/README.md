@@ -24,4 +24,16 @@
 
 {% embed url="https://zhuanlan.zhihu.com/p/296809584" %}
 
+**对抗样本：**
+
+对输入样本故意添加一些人无法察觉的细微的干扰，导致模型以高置信度给出一个错误的输出。
+
+{% embed url="https://zhuanlan.zhihu.com/p/296809584" %}
+
+
+
+
+
+
+
 {% embed url="https://arxiv.org/pdf/2103.00550.pdf" %}

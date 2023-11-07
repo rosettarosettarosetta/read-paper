@@ -1,6 +1,8 @@
 # ✅ semi-supervised
 
-## 综述：
+## 综述（[https://arxiv.org/pdf/2103.00550.pdf](https://arxiv.org/pdf/2103.00550.pdf)）：
+
+## [https://arxiv.org/abs/2103.00550](https://arxiv.org/abs/2103.00550)
 
 注意：**Semi-supervised clustering**，
 
@@ -19,5 +21,7 @@
 对抗训练（Adversarial Training）是一种通过引入对抗性示例或对抗性信号来训练模型的方法。它主要用于增强模型的鲁棒性和抗干扰能力。
 
 在对抗训练中，通常存在两个模型：生成模型和判别模型。生成模型旨在生成具有对抗性特征的样本，以尽可能地欺骗判别模型。判别模型则被训练用于区分真实样本和生成样本。这两个模型通过交替训练进行对抗优化。
+
+{% embed url="https://zhuanlan.zhihu.com/p/296809584" %}
 
 {% embed url="https://arxiv.org/pdf/2103.00550.pdf" %}

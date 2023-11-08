@@ -35,3 +35,4 @@
     * [Mean Teachers](supervision/semi-supervised/mean-teachers.md)
   * [🧷 abstract](supervision/abstract.md)
 * [calendar for push me up](calendar-for-push-me-up.md)
+* [experiment method](experiment-method.md)

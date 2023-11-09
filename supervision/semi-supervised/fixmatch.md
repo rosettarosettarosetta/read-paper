@@ -52,7 +52,7 @@ FixMatch的核心：
 
 ## 论文摘要
 
-将一个弱增强的图像（顶部）输入到模型中以获得预测结果（红色框）。**当模型对任何类别分配的概率高于一个阈值（虚线）时，将预测结果转换为一个**[**独热**](fixmatch.md#user-content-extended-explanation-1)**伪标签（**a one-hot pseudo-label**）（？）**。然后，我们计算模型对同一图像进行强增强后的版本的预测结果（底部）。通过**交叉熵损失**，训练模型使其在强增强版本上的预测结果与伪标签相匹配。
+将一个弱增强的图像（顶部）输入到模型中以获得预测结果（红色框）。**当模型对任何类别分配的概率高于一个阈值（虚线）时，将预测结果转换为一个**[**独热**](fixmatch.md#user-content-extended-explanation-1)**伪标签（**a one-hot pseudo-label**）（？）**。然后，我们计算模型对同一图像进行**强增强**后的版本的预测结果（底部）。通过**交叉熵损失**，训练模型使其在强增强版本上的预测结果与伪标签相匹配。
 
 
 
@@ -107,9 +107,37 @@ FixMatch的核心：
 
 ### 1.独热（one hot） <a href="#user-content-extended-explanation" id="user-content-extended-explanation"></a>
 
+离散特征的编码分为两种情况：
 
+1、离散特征的取值之间没有大小的意义，比如color：\[red,blue],那么就使用one-hot编码
+
+2、离散特征的取值有大小的意义，比如size:\[X,XL,XXL],那么就使用数值的映射{X:1,XL:2,XXL:3}
+
+
+
+其方法是使用N位状态寄存器来对N个状态进行编码
+
+
+
+优点：独热编码解决了分类器不好处理属性数据的问题，在一定程度上也起到了扩充特征的作用。它的值只有0和1，不同的类型存储在垂直的空间。
 
 {% embed url="https://zhuanlan.zhihu.com/p/134495345" %}
+
+### 2.交叉熵损失函数
+
+#### 二分类
+
+<figure><img src="../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
+
+#### &#x20;多分类
+
+<figure><img src="../../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
+
+\- ![M](https://www.zhihu.com/equation?tex=M\&consumer=ZHI\_MENG) ——类别的数量\
+\- ![y\_{ic}](https://www.zhihu.com/equation?tex=y\_%7Bic%7D\&consumer=ZHI\_MENG) ——符号函数（ ![0](https://www.zhihu.com/equation?tex=0\&consumer=ZHI\_MENG) 或 ![1](https://www.zhihu.com/equation?tex=1\&consumer=ZHI\_MENG) ），如果样本 ![i](https://www.zhihu.com/equation?tex=i\&consumer=ZHI\_MENG) 的真实类别等于 ![c](https://www.zhihu.com/equation?tex=c\&consumer=ZHI\_MENG) 取 ![1](https://www.zhihu.com/equation?tex=1\&consumer=ZHI\_MENG) ，否则取 ![0](https://www.zhihu.com/equation?tex=0\&consumer=ZHI\_MENG)\
+\- ![p\_{ic}](https://www.zhihu.com/equation?tex=p\_%7Bic%7D\&consumer=ZHI\_MENG) ——观测样本 ![i](https://www.zhihu.com/equation?tex=i\&consumer=ZHI\_MENG) 属于类别 ![c](https://www.zhihu.com/equation?tex=c\&consumer=ZHI\_MENG) 的预测概率
+
+{% embed url="https://www.zhihu.com/tardis/zm/art/35709485?source_id=1003" %}
 
 ## REFERENCE：
 

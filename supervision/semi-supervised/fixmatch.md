@@ -68,9 +68,11 @@ FixMatch的核心：
 
 
 
+损失函数：
 
+<figure><img src="../../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
 
-
+α and pm are stochastic functions
 
 
 

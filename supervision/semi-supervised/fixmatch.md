@@ -52,9 +52,13 @@ FixMatch的核心：
 
 ## 论文摘要
 
-将一个弱增强的图像（顶部）输入到模型中以获得预测结果（红色框）。**当模型对任何类别分配的概率高于一个阈值（虚线）时，将预测结果转换为一个独热伪标签（**a one-hot pseudo-label**）**。然后，我们计算模型对同一图像进行强增强后的版本的预测结果（底部）。通过**交叉熵损失**，训练模型使其在强增强版本上的预测结果与伪标签相匹配。
+将一个弱增强的图像（顶部）输入到模型中以获得预测结果（红色框）。**当模型对任何类别分配的概率高于一个阈值（虚线）时，将预测结果转换为一个**[**独热**](fixmatch.md#user-content-extended-explanation-1)**伪标签（**a one-hot pseudo-label**）（？）**。然后，我们计算模型对同一图像进行强增强后的版本的预测结果（底部）。通过**交叉熵损失**，训练模型使其在强增强版本上的预测结果与伪标签相匹配。
 
 
+
+```
+         首先，图片进行轻微的数据增强，然后输入网络进行预测，生成独热编码的为标签。然后，把同样的图片进行强烈的数据增强，得到预测特征。如果轻微数据增强的预测得分大于一定的阈值，那么生成的为标签就和强烈数据增强的特征计算交叉熵损失。整个过程如上图所示：
+```
 
 人工标签是基于一个**弱增强**的无标签图像产生的（例如，只使用翻转和平移数据增强），当模型输入同一图像的强增强版本时，这个弱增强的无标签图像被用作目标。
 
@@ -99,9 +103,24 @@ FixMatch的核心：
 
 [https://github.com/google-research/fixmatch](https://github.com/google-research/fixmatch)
 
+## [Extended explanation：](https://github.com/rosettarosettarosetta/read-paper/blob/main/sam/segment-anything.md#extended-explanation) <a href="#user-content-extended-explanation" id="user-content-extended-explanation"></a>
+
+### 1.独热（one hot） <a href="#user-content-extended-explanation" id="user-content-extended-explanation"></a>
+
+
+
+{% embed url="https://zhuanlan.zhihu.com/p/134495345" %}
+
 ## REFERENCE：
 
-1\.
+1.离散特征的编码分为两种情况：
+
+.离散特征的取值之间没有大小的意义，比如color：\[red,blue],那么就使用one-hot编码
+
+.离散特征的取值有大小的意义，比如size:\[X,XL,XXL],那么就使用数值的映射
+
+\
+
 
 {% embed url="https://www.zhihu.com/question/457133996/answer/2672409953" %}
 

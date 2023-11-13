@@ -13,18 +13,6 @@ _（什么是独立的弱增强和强增强）_
 * 一致性正则和伪标签方法的，简单组合
 * 无标签模型预测，与UDA一样，采用[RandAugment\[](fixmatch.md#3.randaugment)3]进行强增强
 
-
-
-#### 增强的区别：
-
-* “弱”增强（翻转、缩放）
-* “强”增强（CutOut、CTAugment、RandAugment),
-
-\
-
-
-
-
 <figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## 论文摘要
@@ -71,16 +59,55 @@ H(p, q)：两个概率分布p和q之间的交叉熵。
 
 <figure><img src="../../.gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure>
 
-仅保留最大类别（q̂b = arg max(qb)）概率高于预定义阈值的人工标签，τ是阈值
+这指的是使用“**硬”标签**（即模型输出的arg max）并仅保留最大类别概率高于预定义阈值的人工标签
 
-使用**硬标签**使得伪标签与熵最小化密切相关，其中鼓励模型在无标签数据上具有低熵（即高置信度）的预测。
+仅保留最大类别（q̂b = arg max(qb)，qd为伪标签）概率高于预定义阈值的人工标签，τ是阈值
 
-
-
-
+使用[**硬标签**](fixmatch.md#4.-ying-biao-qian)使得伪标签与熵最小化密切相关，其中鼓励模型在无标签数据上具有低熵（即高置信度）的预测。（有点不懂了）
 
 
 
+#### 损失函数：
+
+损失函数包括2个交叉熵函数：有标签数据的监督损失<img src="../../.gitbook/assets/image (44).png" alt="" data-size="line">(应用于标注的数据)和无监督损失<img src="../../.gitbook/assets/image (45).png" alt="" data-size="line">
+
+<img src="../../.gitbook/assets/image (48).png" alt="" data-size="line">只是应用于弱增强有标签样本的标准交叉熵损失：
+
+
+
+<figure><img src="../../.gitbook/assets/image (50).png" alt=""><figcaption></figcaption></figure>
+
+FixMatch为每个无标签样本计算一个人工标签，然后在标准的交叉熵损失中使用该标签。
+
+为了获得**人工标签**，我们首先计算模型在给定无标签图像的弱增强版本上的预测类别分布：qb = pm(y | α(ub)）。然后，我们使用q̂b = arg max(qb)作为伪标签，但我们强制将交叉熵损失施加在模型对ub的强**增强版本的输出上**：
+
+
+
+<figure><img src="../../.gitbook/assets/image (51).png" alt=""><figcaption></figcaption></figure>
+
+与上上个式子相似，区别在于人工标签是基于弱增强图像计算的，并且损失是针对强增强图像的模型输出进行施加的。
+
+
+
+FixMatch所最小化的损失函数简单地表示为`s + λu`u，其中λu是一个固定的标量超参数，表示无标签损失的相对权重。在现代SSL算法中，通常会在训练过程中增加无标签损失项（λu）的权重\[51, 24, 4, 3, 36]。然而，我们发现对于FixMatch来说这是不必要的，
+
+
+
+### 增强的区别：
+
+* “弱”增强（翻转、缩放）
+
+50%的概率在所有数据集（除了SVHN）上随机水平翻转图像，并且在垂直和水平方向上随机平移图像，最多不超过12.5%。
+
+* “强”增强（CutOut、CTAugment、RandAugment，AutoAugment变体),
+
+基于AutoAugment的RandAugment和CTAugment
+
+AutoAugment使用强化学习来找到一种由Python Imaging Library中的变换组成的增强策略。然而，这需要使用有标签数据来学习增强策略，在有限的有标签数据可用的SSL设置中使用时存在问题。
+
+RandAugment和CTAugment两者**不需要预先使用有标签数据学习增强策略**，而是对每个样本随机选择变换。
+
+对于RandAugment，控制所有失真程度的幅度是从预定义的范围中随机采样的（还使用了具有随机幅度的RandAugment进行了UDA），而CTAugment则在运行时动态学习每个变换的幅度。
 
 
 
@@ -88,8 +115,6 @@ H(p, q)：两个概率分布p和q之间的交叉熵。
 
 
 
-
-\
 
 
 {% embed url="https://arxiv.org/abs/2001.07685" %}
@@ -97,6 +122,10 @@ H(p, q)：两个概率分布p和q之间的交叉熵。
 {% endembed %}
 
 [https://github.com/google-research/fixmatch](https://github.com/google-research/fixmatch)
+
+## &#x20;<a href="#user-content-extended-explanation" id="user-content-extended-explanation"></a>
+
+## &#x20;<a href="#user-content-extended-explanation" id="user-content-extended-explanation"></a>
 
 ## [Extended explanation：](https://github.com/rosettarosettarosetta/read-paper/blob/main/sam/segment-anything.md#extended-explanation) <a href="#user-content-extended-explanation" id="user-content-extended-explanation"></a>
 
@@ -120,7 +149,11 @@ H(p, q)：两个概率分布p和q之间的交叉熵。
 
 ex:
 
-猫：\[1, 0, 0] 狗：\[0, 1, 0] 鸟：\[0, 0, 1]
+猫：\[1, 0, 0]&#x20;
+
+狗：\[0, 1, 0]&#x20;
+
+鸟：\[0, 0, 1]
 
 {% embed url="https://zhuanlan.zhihu.com/p/134495345" %}
 

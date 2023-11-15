@@ -2,7 +2,7 @@
 description: 一致性正则化和伪标签方法的结合，一致性正则化时使用独立的弱增强和强增强。
 ---
 
-# FixMatch
+# 👁 FixMatch
 
 _（什么是独立的弱增强和强增强）_
 
@@ -137,7 +137,7 @@ FixMatch与两种最近的方法最相似，它们分别是无监督数据增强
 
 ## &#x20;<a href="#user-content-extended-explanation" id="user-content-extended-explanation"></a>
 
-## [Extended explanation：](https://github.com/rosettarosettarosetta/read-paper/blob/main/sam/segment-anything.md#extended-explanation) <a href="#user-content-extended-explanation" id="user-content-extended-explanation"></a>
+## Extended explanation： <a href="#user-content-extended-explanation" id="user-content-extended-explanation"></a>
 
 ### 1.独热（one hot） <a href="#user-content-extended-explanation" id="user-content-extended-explanation"></a>
 

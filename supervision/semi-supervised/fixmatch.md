@@ -215,7 +215,15 @@ vs：**软标签**（Soft Labels）是指将样本的标签表示为概率分布
 
 .离散特征的取值有大小的意义，比如size:\[X,XL,XXL],那么就使用数值的映射
 
-\
+
+
+
+
+## question:
+
+1.what does two models mean?is one be made from the paper?&#x20;
+
+2.when have the loss ,how to imporve the model?\
 
 
 {% embed url="https://www.zhihu.com/question/457133996/answer/2672409953" %}

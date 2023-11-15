@@ -44,6 +44,24 @@ reference:
 
 
 
+作为第一步，考虑到模型的softmax输出通常在训练数据之外无法提供准确的预测。这可以通过在推断时向模型添加噪声来部分缓解\[4]，因此，一个带有噪声的教师可以产生更准确的目标（图1d）。这种方法在伪集成一致性（Pseudo-Ensemble Agreement）\[2]中被使用，并且最近在半监督图像分类\[13, 23]中表现良好。Laine和Aila \[13]将该方法命名为Π模型；我们将使用这个名称以及他们的版本作为我们实验的基础。
+
+
+
+Π模型可以通过Temporal Ensembling \[13]进一步改进，它对每个训练样本维护一个指数移动平均（EMA）预测。在每个训练步骤中，该小批量中所有示例的EMA预测基于新的预测进行更新。因此，每个示例的EMA预测由模型的当前版本和之前评估相同示例的早期版本组成的集合形成。这种集成提高了预测的质量，并且使用它们作为教师预测可以改善结果。然而，由于每个目标每个时期只更新一次，学到的信息以较慢的速度纳入训练过程中。数据集越大，更新的跨度越长，在在线学习的情况下，Temporal Ensembling如何使用尚不清楚。（可以周期性地多次评估所有目标超过一个时期，但保持评估跨度恒定将需要每个时期进行O(n^2)次评估，其中n是训练样本的数量。）
+
+
+
+&#x20;the teacher model is an average of consecutive student models
+
+
+
+学生模型和教师模型都在其计算过程中应用噪声（η，η0）来评估输入。学生模型的softmax输出与独热标签使用分类成本进行比较，并与教师输出使用一致性成本进行比较。在使用梯度下降更新学生模型的权重之后，教师模型的权重被更新为学生模型权重的指数移动平均值。两个模型的输出都可以用于预测，但在训练结束时，教师的预测更有可能是正确的。使用未标记示例的训练步骤类似，只是不会应用分类成本。
+
+
+
+
+
 ## Extended explanation： <a href="#user-content-extended-explanation" id="user-content-extended-explanation"></a>
 
 1.temporal ensembing ：the targets change only once per epoch ，so it is  unwieldy when learning large datasets

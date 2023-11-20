@@ -17,7 +17,7 @@ _（什么是独立的弱增强和强增强）_
 
 ## 论文摘要
 
-将一个弱增强的图像（顶部）输入到模型中以获得预测结果（红色框）。**当模型对任何类别分配的概率高于一个阈值（虚线）时，将预测结果转换为一个（**[**独热**](fixmatch.md#user-content-extended-explanation-1)**伪标签（**a one-hot pseudo-label**），**只有当模型预测高于阈值时，才会保留为**伪标签（**相当于，在前期训练阶段中，无标签样本损失可能一直是为0的**）**。
+将一个弱增强的图像（顶部）输入到模型中以获得预测结果（红色框）。**当**[<mark style="color:yellow;">**模型**</mark>](fixmatch.md#1.what-does-two-models-mean-is-one-be-made-from-the-paper)**对任何类别分配的概率高于一个阈值（虚线）时，将预测结果转换为一个（**[**独热**](fixmatch.md#user-content-extended-explanation-1)**伪标签（**a one-hot pseudo-label**），**只有当模型预测高于阈值时，才会保留为**伪标签（**相当于，在前期训练阶段中，无标签样本损失可能一直是为0的**）**。
 
 然后，我们计算模型对同一图像进行**强增强**后的版本的预测结果（底部）。
 
@@ -226,10 +226,18 @@ vs：**软标签**（Soft Labels）是指将样本的标签表示为概率分布
 
 ## question:
 
-1.what does two models mean?is one be made from the paper?&#x20;
+### 1.what does two models mean?is one be made from the paper?&#x20;
 
-2.when have the loss ,how to imporve the model?\
+gpt的答案：
 
+在FixMatch模型中，获取模型的预测结果通常是通过调用模型的推理（inference）过程来实现的。具体步骤如下：
+
+1. 准备输入数据：将待预测的图像数据进行预处理，包括图像大小调整、归一化等操作，以符合模型的输入要求。
+2. 调用模型的推理过程：将预处理后的图像数据输入到已经训练好的FixMatch模型中。
+3. 获取预测结果：模型会对输入的图像进行前向传播，计算出每个类别的概率分布。可以通过获取概率最高的类别或者根据需要获取其他信息，如置信度等。
+4. 解释和使用预测结果：根据具体的应用场景，可以将预测结果用于分类、目标检测、图像生成等任务。
+
+### 2.when have the loss ,how to imporve the model? 
 
 {% embed url="https://www.zhihu.com/question/457133996/answer/2672409953" %}
 

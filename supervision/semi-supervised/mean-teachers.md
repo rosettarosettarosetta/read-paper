@@ -74,6 +74,10 @@ reference:
 
 
 
+
+
+Π 模型、Temporal Ensembling 和 Mean teacher 之间的区别在于教师预测是如何生成的。
+
 Π 模型使用 θ“ = θ，而 Temporal Ensembling 则通过对连续预测的加权平均来近似 f(x, θ0, η0)。在这里，我们将训练步骤 t 时的 θ”t 定义为连续 θ 权重的 EMA（指数移动平均）：
 
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
@@ -81,6 +85,8 @@ reference:
 α is a smoothing coefficient hyperparameter （平滑系数超参数）
 
 
+
+其中，α 是一个平滑系数超参数。这三种算法之间的另一个区别在于 Π 模型对 θ0 进行训练，而 Temporal Ensembling 和 Mean Teacher 则将其视为优化过程中的常数。我们可以通过使用随机梯度下降在每个训练步骤中对噪声 η、η0 进行采样来近似计算一致性成本函数 J。根据 Laine & Aila \[13] 的方法，在大多数实验中，我们使用均方误差（MSE）作为一致性成本。
 
 
 

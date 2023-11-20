@@ -12,11 +12,11 @@ Mean Teachers是在模型的权重上。且该算法的核心思想是将模型�
 
 默认输入数据添加一个微小的扰动噪声时，模型的预测结果不会发生变化。
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 reference:
 
@@ -64,7 +64,7 @@ reference:
 
 ### the consistency cost J（一致性成本）
 
-<figure><img src="../../.gitbook/assets/image (55).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (55).png" alt=""><figcaption></figcaption></figure>
 
 &#x20;&#x20;
 
@@ -80,7 +80,7 @@ reference:
 
 Π 模型使用 θ“ = θ，而 Temporal Ensembling 则通过对连续预测的加权平均来近似 f(x, θ0, η0)。在这里，我们将训练步骤 t 时的 θ”t 定义为连续 θ 权重的 EMA（指数移动平均）：
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 α is a smoothing coefficient hyperparameter （平滑系数超参数）
 

@@ -13,7 +13,7 @@ _（什么是独立的弱增强和强增强）_
 * 一致性正则和伪标签方法的，简单组合
 * 无标签模型预测，与UDA一样，采用[RandAugment\[](fixmatch.md#3.randaugment)3]进行强增强
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## 论文摘要
 

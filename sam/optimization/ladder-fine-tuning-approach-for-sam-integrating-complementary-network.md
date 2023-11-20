@@ -84,7 +84,7 @@ x = α · xsam + (1 − α) · xcnn
 
 #### [图像分割评](https://blog.csdn.net/kksimida/article/details/129643885?ops\_request\_misc=%257B%2522request%255Fid%2522%253A%2522169805899316800188527608%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D\&request\_id=169805899316800188527608\&biz\_id=0\&utm\_medium=distribute.pc\_search\_result.none-task-blog-2\~all\~top\_click\~default-2-129643885-null-null.142^v96^pc\_search\_result\_base6\&utm\_term=dice\&spm=1018.2226.3001.4187)价指标: [Dice](https://blog.csdn.net/m0\_57527312/article/details/124202172?ops\_request\_misc=%257B%2522request%255Fid%2522%253A%2522169805899316800188527608%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D\&request\_id=169805899316800188527608\&biz\_id=0\&utm\_medium=distribute.pc\_search\_result.none-task-blog-2\~all\~top\_positive\~default-1-124202172-null-null.142^v96^pc\_search\_result\_base6\&utm\_term=dice\&spm=1018.2226.3001.4187) <a href="#articlecontentid" id="articlecontentid"></a>
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 我们把X当作Gt，Y当作Pred，dice系数就可以评价结果了。
 
@@ -96,7 +96,7 @@ x = α · xsam + (1 − α) · xcnn
 
 所以，上面公式可以转换为：
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 

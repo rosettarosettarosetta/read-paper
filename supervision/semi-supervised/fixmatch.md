@@ -217,6 +217,11 @@ vs：**软标签**（Soft Labels）是指将样本的标签表示为概率分布
 
 
 
+## Experiments experiment
+
+作者也实验了在一致性正则化中，强弱数据增强策略不同的组合对结果影响。强增强+强增强的组合会导致模型发散。将弱增强替换为无增强则会导致模型过拟合。使用弱增强+弱增强则会导致训练失败（这里笔者难以理解内在的原因）。
+
+\
 
 
 ## question:
@@ -228,5 +233,5 @@ vs：**软标签**（Soft Labels）是指将样本的标签表示为概率分布
 
 {% embed url="https://www.zhihu.com/question/457133996/answer/2672409953" %}
 
-
+{% embed url="https://zhuanlan.zhihu.com/p/387276231" %}
 

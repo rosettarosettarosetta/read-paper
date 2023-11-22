@@ -6,7 +6,7 @@ description: 2017 3000引用
 
 **CL**
 
-Mean Teachers是在模型的权重上。且该算法的核心思想是将模型分为教师和学生，老师用来生成学生学习的目标，学生用老师提供的目标来进行学习，而老师模型的权重是通过学生[模型时间](https://www.zhihu.com/search?q=%E6%A8%A1%E5%9E%8B%E6%97%B6%E9%97%B4\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22577959642%22%7D)记忆的加权平均得到，同时该算法也是**基于一致性正则化（**consistency**）**
+算法的核心是将模型分为教师和学生，老师用来生成学生学习的目标，学生用老师提供的目标来进行学习，老师模型的权重是通过学生[模型时间](https://www.zhihu.com/search?q=%E6%A8%A1%E5%9E%8B%E6%97%B6%E9%97%B4\&search\_source=Entity\&hybrid\_search\_source=Entity\&hybrid\_search\_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A%22577959642%22%7D)记忆的加权平均得到，同时该算法也是**基于一致性正则化（**consistency**）**
 
 
 
@@ -86,7 +86,7 @@ reference:
 
 
 
-其中，α 是一个平滑系数超参数。这三种算法之间的另一个区别在于 Π 模型对 θ0 进行训练，而 Temporal Ensembling 和 Mean Teacher 则将其视为优化过程中的常数。我们可以通过使用随机梯度下降在每个训练步骤中对噪声 η、η0 进行采样来近似计算一致性成本函数 J。根据 Laine & Aila \[13] 的方法，在大多数实验中，我们使用均方误差（MSE）作为一致性成本。
+这三种算法之间的另一个区别在于 Π 模型对 θ'进行训练，而 Temporal Ensembling 和 Mean Teacher 则将其视为优化过程中的常数。我们可以通过使用随机梯度下降在每个训练步骤中对噪声 η、η0 进行采样来近似计算一致性成本函数 J。在大多数实验中，我们使用均方误差（MSE）作为一致性成本。
 
 
 

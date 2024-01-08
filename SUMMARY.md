@@ -12,6 +12,7 @@
   * [特定特征改变生成图片模型调查](cross-modal/te-ding-te-zheng-gai-bian-sheng-cheng-tu-pian-mo-xing-tiao-cha.md)
 * [cortical activity decode](cortical-activity-decode/README.md)
   * [Machine translation of cortical activity to text with an encoder-decoder framework](cortical-activity-decode/machine-translation-of-cortical-activity-to-text-with-an-encoder-decoder-framework.md)
+  * [In vitro neurons learn and exhibit sentience when embodied in a simulated game-world](cortical-activity-decode/in-vitro-neurons-learn-and-exhibit-sentience-when-embodied-in-a-simulated-game-world.md)
 * [SAM](sam/README.md)
   * [optimization](sam/optimization/README.md)
     * [SAMUS：SAM+CNN](sam/optimization/samus-sam+cnn.md)

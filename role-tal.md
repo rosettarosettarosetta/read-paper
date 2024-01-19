@@ -1,6 +1,6 @@
 # 👥 role-tal
 
-## [https://app.gitbook.com/o/VlB8ZYA7SXZhaYDvifu1/s/hQfNZrXTHQXeu8H7pn1z/ai](http://127.0.0.1:5000/s/hQfNZrXTHQXeu8H7pn1z/ai) <a href="#user-content-ai" id="user-content-ai"></a>
+## [https://app.gitbook.com/o/VlB8ZYA7SXZhaYDvifu1/s/hQfNZrXTHQXeu8H7pn1z/ai](https://app.gitbook.com/s/hQfNZrXTHQXeu8H7pn1z/ai) <a href="#user-content-ai" id="user-content-ai"></a>
 
 
 
@@ -17,6 +17,14 @@ Voice processing: 322
 euros Amazon Web Services: 18
 
 euros GPT4: 38 euros
+
+
+
+**Play.ht：口播**
+
+
+
+
 
 背后团队：
 

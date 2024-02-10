@@ -21,6 +21,7 @@
   * [✍ Transformer](sam/transformer.md)
   * [✍ long-term dependency](sam/nlp-long-term-dependency.md)
   * [🧷 reference](sam/reference.md)
+  * [Ladder Fine-tuning](sam/ladder-fine-tuning.md)
 * [😏 conference](conference/README.md)
   * [11.3](conference/page-1.md)
 * [✅ supervision](supervision/README.md)

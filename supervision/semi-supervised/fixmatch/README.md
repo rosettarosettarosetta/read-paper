@@ -11,13 +11,13 @@ _（什么是独立的弱增强和强增强）_
 #### 核心：
 
 * 一致性正则和伪标签方法的，简单组合
-* 无标签模型预测，与UDA一样，采用[RandAugment\[](fixmatch.md#3.randaugment)3]进行强增强
+* 无标签模型预测，与UDA一样，采用[RandAugment\[](./#3.randaugment)3]进行强增强
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## 论文摘要
 
-将一个弱增强的图像（顶部）输入到模型中以获得预测结果（红色框）。**当**[<mark style="color:yellow;">**模型**</mark>](fixmatch.md#1.what-does-two-models-mean-is-one-be-made-from-the-paper)**对任何类别分配的概率高于一个阈值（虚线）时，将预测结果转换为一个（**[**独热**](fixmatch.md#user-content-extended-explanation-1)**伪标签（**a one-hot pseudo-label**），**只有当模型预测高于阈值时，才会保留为**伪标签（**相当于，在前期训练阶段中，无标签样本损失可能一直是为0的**）**。
+将一个弱增强的图像（顶部）输入到模型中以获得预测结果（红色框）。**当**[<mark style="color:yellow;">**模型**</mark>](./#1.what-does-two-models-mean-is-one-be-made-from-the-paper)**对任何类别分配的概率高于一个阈值（虚线）时，将预测结果转换为一个（**[**独热**](./#user-content-extended-explanation-1)**伪标签（**a one-hot pseudo-label**），**只有当模型预测高于阈值时，才会保留为**伪标签（**相当于，在前期训练阶段中，无标签样本损失可能一直是为0的**）**。
 
 然后，我们计算模型对同一图像进行**强增强**后的版本的预测结果（底部）。
 
@@ -41,7 +41,7 @@ H(p, q)：两个概率分布p和q之间的交叉熵。
 
 #### 损失函数：
 
-<figure><img src="../../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
 
 对这个想法的扩展：
 
@@ -57,25 +57,25 @@ H(p, q)：两个概率分布p和q之间的交叉熵。
 
 #### 伪标签函数：
 
-<figure><img src="../../.gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure>
 
 这指的是使用“**硬”标签**（即模型输出的arg max）并仅保留最大类别概率高于预定义阈值的人工标签
 
 仅保留最大类别（q̂b = arg max(qb)，qd为伪标签）概率高于预定义阈值的人工标签，τ是阈值
 
-使用[**硬标签**](fixmatch.md#4.-ying-biao-qian)使得伪标签与熵最小化密切相关，其中鼓励模型在无标签数据上具有低熵（即高置信度）的预测。（有点不懂了）
+使用[**硬标签**](./#4.-ying-biao-qian)使得伪标签与熵最小化密切相关，其中鼓励模型在无标签数据上具有低熵（即高置信度）的预测。（有点不懂了）
 
 
 
 #### 损失函数：
 
-损失函数包括2个交叉熵函数：有标签数据的监督损失<img src="../../.gitbook/assets/image (44).png" alt="" data-size="line">(应用于标注的数据)和无监督损失<img src="../../.gitbook/assets/image (45).png" alt="" data-size="line">
+损失函数包括2个交叉熵函数：有标签数据的监督损失<img src="../../../.gitbook/assets/image (44).png" alt="" data-size="line">(应用于标注的数据)和无监督损失<img src="../../../.gitbook/assets/image (45).png" alt="" data-size="line">
 
-<img src="../../.gitbook/assets/image (48).png" alt="" data-size="line">只是应用于弱增强有标签样本的标准交叉熵损失：
+<img src="../../../.gitbook/assets/image (48).png" alt="" data-size="line">只是应用于弱增强有标签样本的标准交叉熵损失：
 
 
 
-<figure><img src="../../.gitbook/assets/image (50).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (50).png" alt=""><figcaption></figcaption></figure>
 
 FixMatch为每个无标签样本计算一个人工标签，然后在标准的交叉熵损失中使用该标签。
 
@@ -83,7 +83,7 @@ FixMatch为每个无标签样本计算一个人工标签，然后在标准的交
 
 
 
-<figure><img src="../../.gitbook/assets/image (51).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (51).png" alt=""><figcaption></figcaption></figure>
 
 与上上个式子相似，区别在于人工标签是基于弱增强图像计算的，并且损失是针对强增强图像的模型输出进行施加的。
 
@@ -115,13 +115,13 @@ RandAugment和CTAugment两者**不需要预先使用有标签数据学习增强�
 
 我们使用模型参数的指数移动平均来报告最终性能。
 
-对于学习率调度，我们使用余弦学习率衰减\[28]，将学习率设置为<img src="../../.gitbook/assets/image (53).png" alt="" data-size="line">，其中η是初始学习率，k是当前训练步骤，K是总训练步骤数。
+对于学习率调度，我们使用余弦学习率衰减\[28]，将学习率设置为<img src="../../../.gitbook/assets/image (53).png" alt="" data-size="line">，其中η是初始学习率，k是当前训练步骤，K是总训练步骤数。
 
 
 
 ### 扩展：
 
-ReMixMatch中的[**增强锚定**](fixmatch.md#5.-zeng-qiang-mao-ding)（对于每个无标签样本，使用M个强增强进行一致性正则化）和**分布对齐**（鼓励模型预测具有与有标签集相同的类别分布）可以直接应用于FixMatch。此外，可以将FixMatch中的强增强替换为与模态无关的增强策略，例如MixUp \[59]或对抗扰动\[33]。
+ReMixMatch中的[**增强锚定**](./#5.-zeng-qiang-mao-ding)（对于每个无标签样本，使用M个强增强进行一致性正则化）和**分布对齐**（鼓励模型预测具有与有标签集相同的类别分布）可以直接应用于FixMatch。此外，可以将FixMatch中的强增强替换为与模态无关的增强策略，例如MixUp \[59]或对抗扰动\[33]。
 
 
 
@@ -171,11 +171,11 @@ ex:
 
 #### 二分类
 
-<figure><img src="../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
 
 #### &#x20;多分类
 
-<figure><img src="../../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
 
 \- ![M](https://www.zhihu.com/equation?tex=M\&consumer=ZHI\_MENG) ——类别的数量\
 \- ![y\_{ic}](https://www.zhihu.com/equation?tex=y\_%7Bic%7D\&consumer=ZHI\_MENG) ——符号函数（ ![0](https://www.zhihu.com/equation?tex=0\&consumer=ZHI\_MENG) 或 ![1](https://www.zhihu.com/equation?tex=1\&consumer=ZHI\_MENG) ），如果样本 ![i](https://www.zhihu.com/equation?tex=i\&consumer=ZHI\_MENG) 的真实类别等于 ![c](https://www.zhihu.com/equation?tex=c\&consumer=ZHI\_MENG) 取 ![1](https://www.zhihu.com/equation?tex=1\&consumer=ZHI\_MENG) ，否则取 ![0](https://www.zhihu.com/equation?tex=0\&consumer=ZHI\_MENG)\

@@ -12,11 +12,11 @@ description: 2017 3000引用
 
 默认输入数据添加一个微小的扰动噪声时，模型的预测结果不会发生变化。
 
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (2).png" alt=""><figcaption></figcaption></figure>
+
+
+
 <figure><img src="../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
-
-
-
-<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 reference:
 

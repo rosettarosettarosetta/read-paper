@@ -49,3 +49,5 @@
   * [Summer Programmes](application/summer-programmes/README.md)
     * [Courses](application/summer-programmes/courses.md)
     * [research](application/summer-programmes/research.md)
+* [LDA](lda/README.md)
+  * [Artificial intelligence in marketing](lda/artificial-intelligence-in-marketing.md)
